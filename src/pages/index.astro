@@ -410,28 +410,41 @@ import '../global.css';
       </div>
     </footer>
 
-    <!-- Banner de Cookies -->
-<div id="cookie-banner" class="fixed bottom-0 left-0 right-0 bg-[#314832] text-white p-4 px-6 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-4 z-50 translate-y-full transition-transform duration-500">
-  <p class="text-sm">
-    Utilizamos cookies para mejorar su experiencia en nuestro centro médico. Al continuar navegando, usted acepta nuestra <a href="/privacidad" class="underline font-bold">Política de Privacidad</a>.
+<!-- Banner de Cookies Profesional -->
+<div id="cookie-consent" class="fixed bottom-6 right-6 max-w-sm bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 z-50 translate-y-20 opacity-0 transition-all duration-700">
+  <h4 class="font-bold text-[#314832] mb-2">Política de Privacidad</h4>
+  <p class="text-sm text-slate-600 mb-4 leading-relaxed">
+    En Saberes, protegemos tus datos personales conforme a la normativa vigente. Utilizamos cookies propias para el funcionamiento básico del sitio. 
+    <a href="/privacidad" class="underline text-[#C19A6B]">Ver detalle</a>.
   </p>
-  <button id="accept-cookies" class="bg-[#C19A6B] hover:bg-[#a8875e] text-white px-6 py-2 rounded-full font-bold text-sm transition">
-    Aceptar
-  </button>
+  <div class="flex gap-3">
+    <button id="btn-reject" class="flex-1 px-4 py-2 text-sm text-slate-500 hover:text-slate-800 transition">Rechazar</button>
+    <button id="btn-accept" class="flex-1 px-4 py-2 text-sm bg-[#314832] text-white rounded-xl hover:bg-[#233524] transition">Aceptar</button>
+  </div>
 </div>
 
 <script is:inline>
-  // Mostrar banner si no ha sido aceptado
-  window.addEventListener('load', () => {
-    if (!localStorage.getItem('cookiesAccepted')) {
-      document.getElementById('cookie-banner').classList.remove('translate-y-full');
-    }
+  const banner = document.getElementById('cookie-consent');
+  
+  // Mostrar si no ha interactuado
+  if (!localStorage.getItem('consentimiento')) {
+    setTimeout(() => {
+      banner.classList.remove('translate-y-20', 'opacity-0');
+    }, 1000);
+  }
+
+  // Lógica de aceptación
+  document.getElementById('btn-accept').addEventListener('click', () => {
+    localStorage.setItem('consentimiento', 'true');
+    banner.classList.add('opacity-0', 'translate-y-20');
+    // AQUÍ PUEDES CARGAR SCRIPTS DE ANALYTICS O TERCEROS
+    console.log("Cookies aceptadas, cargando servicios...");
   });
 
-  // Ocultar al aceptar
-  document.getElementById('accept-cookies').addEventListener('click', () => {
-    localStorage.setItem('cookiesAccepted', 'true');
-    document.getElementById('cookie-banner').classList.add('translate-y-full');
+  // Lógica de rechazo
+  document.getElementById('btn-reject').addEventListener('click', () => {
+    localStorage.setItem('consentimiento', 'false');
+    banner.classList.add('opacity-0', 'translate-y-20');
   });
 </script>
 
