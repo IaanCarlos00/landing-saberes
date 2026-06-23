@@ -433,20 +433,41 @@ import '../global.css';
 
 
 <script is:inline>
-  console.log("El script se cargó correctamente");
-
-  document.querySelectorAll('input[type="checkbox"]').forEach(cb => {
-    cb.addEventListener('change', () => {
-      console.log("Checkbox presionado");
-      
-      let total = 0;
-      document.querySelectorAll('input[type="checkbox"]:checked').forEach(c => {
-        total += parseInt(c.value);
-      });
-      
-      document.getElementById('total-precio').innerText = total.toLocaleString('es-CL');
-    });
+  // Escucha cambios en cualquier checkbox
+  document.querySelectorAll('#calculadora input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', updateWhatsAppLink);
   });
+
+  function updateWhatsAppLink() {
+    let total = 0;
+    let items = [];
+    
+    // Recopila los servicios marcados
+    document.querySelectorAll('#calculadora input[type="checkbox"]:checked').forEach(c => {
+      total += parseInt(c.value);
+      items.push(c.dataset.name);
+    });
+    
+    // Actualiza el precio visual
+    document.getElementById('total-precio').innerText = total.toLocaleString('es-CL');
+    
+    // Construye el mensaje automático
+    const btnWsp = document.getElementById('btn-wsp');
+    const baseUrl = "https://wa.me/56954365775?text=";
+    
+    let msg = "";
+    if (items.length > 0) {
+      msg = "Hola, me gustaría agendar los siguientes servicios:\n\n" + 
+            items.map(item => "- " + item).join('\n') + 
+            "\n\nTotal estimado: $" + total.toLocaleString('es-CL') + 
+            "\nQuedo atenta a su confirmación. ¡Muchas gracias!";
+    } else {
+      msg = "Hola, me gustaría agendar una consulta.";
+    }
+    
+    // Asigna el link final al botón
+    btnWsp.href = baseUrl + encodeURIComponent(msg);
+  }
 </script>
 
   </body>
