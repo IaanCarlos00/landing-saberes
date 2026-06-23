@@ -215,19 +215,28 @@ import '../global.css';
         <h2 class="text-3xl font-extrabold text-[#314832] text-center mb-16">Educación y Divulgación</h2>
         
         <div class="grid md:grid-cols-2 gap-12">
-          <!-- Artículos -->
+          <!-- Bloque de Artículos (Reemplaza tu bloque actual de "En la Prensa" por esto) -->
           <div class="space-y-6">
             <h3 class="text-xl font-bold text-[#314832] border-l-4 border-[#C19A6B] pl-4">En la Prensa</h3>
-            <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
+            
+            <!-- Artículo 1 (Visible siempre) -->
+            <div class="bg-white p-6 rounded-2xl shadow-sm">
               <h4 class="font-bold text-[#314832]">Estigma menstrual: Rompiendo tabúes</h4>
-              <p class="text-sm text-slate-600 mt-2 mb-4">La importancia de normalizar los procesos naturales y desmitificar la salud menstrual.</p>
-              <a href="https://lavidamoderna.cl/2026/estigma-menstrual/" target="_blank" class="text-[#C19A6B] font-bold text-sm hover:underline">Leer artículo →</a>
+              <a href="..." class="text-[#C19A6B] text-sm font-bold hover:underline">Leer artículo →</a>
             </div>
-            <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition">
-              <h4 class="font-bold text-[#314832]">Un miedo viral: La verdad sobre el VPH</h4>
-              <p class="text-sm text-slate-600 mt-2 mb-4">Despejamos dudas sobre el virus del papiloma humano para que el miedo no gane terreno.</p>
-              <a href="https://lavidamoderna.cl/2026/un-miedo-viral-vph/" target="_blank" class="text-[#C19A6B] font-bold text-sm hover:underline">Leer artículo →</a>
+
+            <!-- Contenedor oculto que se despliega -->
+            <div id="mas-articulos" class="hidden space-y-4">
+              <div class="bg-white p-6 rounded-2xl shadow-sm">
+                <h4 class="font-bold text-[#314832]">Un miedo viral: La verdad sobre el VPH</h4>
+                <a href="..." class="text-[#C19A6B] text-sm font-bold hover:underline">Leer artículo →</a>
+              </div>
             </div>
+
+            <!-- Botón "Ver más" -->
+            <button onclick="document.getElementById('mas-articulos').classList.toggle('hidden')" class="text-sm font-bold text-[#314832] hover:text-[#C19A6B]">
+              + Ver más artículos
+            </button>
           </div>
 
           <!-- Podcast -->
