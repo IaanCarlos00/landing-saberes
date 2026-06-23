@@ -209,44 +209,45 @@ import '../global.css';
       </div>
     </section>
 
-    <!-- SECCIÓN DE DIVULGACIÓN (Artículos y Podcast) -->
-    <section class="py-20 bg-[#faf8f5] px-6">
+    <!-- SECCIÓN DE DIVULGACIÓN PREMIUM -->
+    <section id="educacion" class="py-20 bg-[#faf8f5] px-6">
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-extrabold text-[#314832] text-center mb-16">Educación y Divulgación</h2>
         
         <div class="grid md:grid-cols-2 gap-12">
-          <!-- Bloque de Artículos (Reemplaza tu bloque actual de "En la Prensa" por esto) -->
+          <!-- Artículos (Ahora con vista previa) -->
           <div class="space-y-6">
-            <h3 class="text-xl font-bold text-[#314832] border-l-4 border-[#C19A6B] pl-4">En la Prensa</h3>
+            <h3 class="text-xl font-bold text-[#314832] border-l-4 border-[#C19A6B] pl-4 mb-8">En la Prensa</h3>
             
-            <!-- Artículo 1 (Visible siempre) -->
-            <div class="bg-white p-6 rounded-2xl shadow-sm">
-              <h4 class="font-bold text-[#314832]">Estigma menstrual: Rompiendo tabúes</h4>
-              <a href="..." class="text-[#C19A6B] text-sm font-bold hover:underline">Leer artículo →</a>
-            </div>
-
-            <!-- Contenedor oculto que se despliega -->
-            <div id="mas-articulos" class="hidden space-y-4">
-              <div class="bg-white p-6 rounded-2xl shadow-sm">
-                <h4 class="font-bold text-[#314832]">Un miedo viral: La verdad sobre el VPH</h4>
-                <a href="..." class="text-[#C19A6B] text-sm font-bold hover:underline">Leer artículo →</a>
+            <!-- Tarjeta 1 -->
+            <a href="https://lavidamoderna.cl/2026/estigma-menstrual/" target="_blank" class="group block bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all">
+              <div class="h-48 bg-slate-200 bg-cover bg-center" style="background-image: url('/preview-estigma.jpg');"></div>
+              <div class="p-6">
+                <h4 class="font-bold text-[#314832] group-hover:text-[#C19A6B] transition">Estigma menstrual: Rompiendo tabúes</h4>
+                <p class="text-sm text-slate-500 mt-2">La importancia de normalizar los procesos naturales y desmitificar la salud menstrual.</p>
               </div>
-            </div>
+            </a>
 
-            <!-- Botón "Ver más" -->
-            <button onclick="document.getElementById('mas-articulos').classList.toggle('hidden')" class="text-sm font-bold text-[#314832] hover:text-[#C19A6B]">
-              + Ver más artículos
+            <!-- Botón para ver más -->
+            <div id="mas-articulos" class="hidden space-y-4">
+              <a href="https://lavidamoderna.cl/2026/un-miedo-viral-vph/" target="_blank" class="block bg-white p-6 rounded-3xl shadow-sm hover:shadow-xl transition">
+                <h4 class="font-bold text-[#314832]">Un miedo viral: La verdad sobre el VPH</h4>
+                <p class="text-sm text-slate-500 mt-2">Despejamos dudas sobre el virus del papiloma humano.</p>
+              </a>
+            </div>
+            <button onclick="document.getElementById('mas-articulos').classList.toggle('hidden')" class="text-sm font-bold text-[#C19A6B] px-4 py-2 hover:bg-[#C19A6B]/10 rounded-full transition">
+              + Ver otros artículos
             </button>
           </div>
 
-          <!-- Podcast -->
-          <div class="bg-[#314832] p-8 rounded-3xl text-white flex flex-col justify-center shadow-xl">
-            <h3 class="text-xl font-bold mb-4 border-l-4 border-[#C19A6B] pl-4">Detrás del Biombo</h3>
-            <p class="text-[#e8dccb] mb-6 leading-relaxed">Escucha nuestro podcast donde exploramos temas de salud femenina de manera cercana, humana y experta.</p>
-            <a href="https://www.youtube.com/@Detr%C3%A1sdelbiombo/videos" target="_blank" class="inline-flex items-center gap-2 bg-[#C19A6B] text-white px-6 py-3 rounded-full font-bold hover:bg-[#a38058] transition w-fit">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.377.505 9.377.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              Ver en YouTube
-            </a>
+          <!-- Podcast / Video destacado -->
+          <div class="space-y-6">
+            <h3 class="text-xl font-bold text-[#314832] border-l-4 border-[#C19A6B] pl-4 mb-8">Detrás del Biombo (YouTube)</h3>
+            <!-- Aquí incrustamos el video para que se vea profesional -->
+            <div class="aspect-video w-full rounded-3xl overflow-hidden shadow-xl">
+              <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PL_TU_ID_DE_LISTA_AQUI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <p class="text-sm text-slate-600">Exploramos temas de salud femenina de manera cercana, humana y experta. ¡Suscríbete!</p>
           </div>
         </div>
       </div>
