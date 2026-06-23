@@ -42,7 +42,7 @@ import '../global.css';
           Tu Salud y Bienestar en Manos Profesionales y Empáticas.
         </h1>
         <p class="text-lg md:text-xl text-[#C19A6B] mb-10 font-bold">
-          Centro Médico Saberes: Espacio de Salud Integral para la Mujer en Concepción.
+          Espacio de Matronería Integral para la Mujer en Concepción y online a todo Chile.
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
@@ -118,7 +118,7 @@ import '../global.css';
               <p class="text-[#C19A6B] font-bold text-sm uppercase tracking-wide mb-4">Matrona</p>
               
               <p class="text-sm leading-relaxed text-slate-600 mb-4">
-                ¡Hola! Mi nombre es Valentina y soy matrona en este hermoso espacio llamado Saberes. Mi propósito de vida es resignificar la atención de matronería, transformándola en una experiencia cálida, humana y profundamente respetuosa. Creo firmemente que cada etapa que vives merece ser acompañada con contención, empatía y mucha dulzura.
+                ¡Hola! Mi nombre es Valentina y soy matrona y cofundadora en este hermoso espacio llamado Saberes. Mi propósito de vida es resignificar la atención de matronería, transformándola en una experiencia cálida, humana y profundamente respetuosa. Creo firmemente que cada etapa que vives merece ser acompañada con contención, empatía y mucha dulzura.
               </p>
               
               <h5 class="text-sm font-bold text-[#314832] mb-2">Mi formación y especialidades:</h5>
@@ -140,23 +140,66 @@ import '../global.css';
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-extrabold text-center text-[#314832] mb-12">Nuestros Servicios</h2>
         
-        <div class="flex flex-wrap justify-center gap-6">
+        <div class="flex flex-wrap justify-center gap-6 items-stretch">
           {[
-            { titulo: "Control Ginecológico", desc: "Atención integral personalizada para cada etapa de tu vida." },
-            { titulo: "Salud Reproductiva", desc: "Gestión de dispositivos (DIU) e implantes con técnica segura." },
-            { titulo: "Anticoncepción", desc: "Orientación y administración de métodos inyectables." },
-            { titulo: "Atención Online", desc: "Consulta remota cómoda y accesible para tus dudas." },
-            { titulo: "Exámenes y Paneles", desc: "Toma de PAP, PCR VPH y paneles especializados." },
-            { titulo: "Estética (Plasmapen)", desc: "Procedimientos de regeneración cutánea profesional." },
-            { titulo: "Control de Embarazo", desc: "Acompañamiento cálido durante tu gestación." },
-            { titulo: "Recambios", desc: "Actualización de dispositivos intrauterinos e implantes." }
+            { 
+              titulo: "Atención Clínica (Fonasa)", 
+              desc: "Valor preferencial de $5.700 para tus controles principales:", 
+              items: ["Control Ginecológico Anual", "Control y Asesoría Anticonceptiva", "Consulta Preconcepcional", "Control Prenatal"]
+            },
+            { 
+              titulo: "Telemedicina y Lactancia", 
+              desc: "Acompañamiento técnico y amoroso a tu medida, donde estés:", 
+              items: ["Atención Online (Chat WhatsApp): $10.000", "Consejería Lactancia en Box: $35.000", "Consejería Lactancia a Domicilio: $45.000"]
+            },
+            { 
+              titulo: "Toma de Muestras Clínicas", 
+              desc: "Procedimientos delicados y respetuosos:", 
+              items: ["Papanicolau (PAP con lab): $17.000", "Genotipificación VPH (con lab): $75.000", "Panel ITS: $5.000 (sin lab) | $62.000 (con lab)", "Flujo Vaginal: $5.000 (sin lab) | $15.500 (con lab)"]
+            },
+            { 
+              titulo: "Anticonceptivos Inyectables", 
+              desc: "Administración segura bajo normas clínicas:", 
+              items: ["Sayana Press (incluye medicamento): $22.000", "Mesigyna (incluye medicamento): $12.000", "Administración Inyección (traes receta y ampolla): $5.000"]
+            },
+            { 
+              titulo: "Dispositivos Larga Duración", 
+              desc: "Ofrecemos colocación profesional y seguimiento cercano:", 
+              items: ["T de Cobre: Inserción $55.000 | Retiro $35.000", "Implanon: Inserción $110.000 | Recambio $135.000 | Retiro $35.000", "Asertia (DIU Hormonal): Inserción $120.000 | Recambio $140.000 | Retiro $35.000"]
+            },
+            { 
+              titulo: "Estética y Lesiones Genitales", 
+              desc: "Técnica novedosa de Plasmapen (Valor base: $40.000):", 
+              items: ["Extracción segura con anestesia local.", "Tratamiento ambulatorio para verrugas genitales, moluscos, condilomas y acrocordones."]
+            }
           ].map((servicio) => (
-            <div class="w-full sm:w-[45%] lg:w-[30%] bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:border-[#C19A6B] hover:shadow-lg transition-all duration-300">
+            <div class="w-full sm:w-[48%] lg:w-[31%] bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:border-[#C19A6B] hover:shadow-lg transition-all duration-300 flex flex-col">
               <div class="w-12 h-1 bg-[#C19A6B] mb-6 rounded-full"></div>
               <h3 class="text-xl font-bold text-[#314832] mb-3">{servicio.titulo}</h3>
-              <p class="text-slate-600 leading-relaxed text-sm">{servicio.desc}</p>
+              <p class="text-slate-600 text-sm mb-4 font-medium">{servicio.desc}</p>
+              <ul class="text-sm text-slate-600 space-y-3 flex-grow">
+                {servicio.items.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-[#C19A6B] mt-0.5 font-bold">✓</span>
+                    <span class="leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN DE CONVENIOS -->
+    <section class="py-12 bg-[#314832] px-6 border-y-4 border-[#C19A6B]">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-sm font-bold text-[#C19A6B] uppercase tracking-widest mb-6">Nuestros Convenios</h2>
+        <div class="flex flex-wrap justify-center items-center gap-4 md:gap-8">
+          <span class="bg-white text-[#314832] font-extrabold py-3 px-8 rounded-full shadow-md text-lg tracking-wide hover:bg-[#faf8f5] transition-colors">FONASA</span>
+          <span class="bg-white text-[#314832] font-extrabold py-3 px-8 rounded-full shadow-md text-lg tracking-wide hover:bg-[#faf8f5] transition-colors">CPD</span>
+          <span class="bg-white text-[#314832] font-extrabold py-3 px-8 rounded-full shadow-md text-lg tracking-wide hover:bg-[#faf8f5] transition-colors">LAB KOCH</span>
+          <span class="bg-white text-[#314832] font-extrabold py-3 px-8 rounded-full shadow-md text-lg tracking-wide hover:bg-[#faf8f5] transition-colors">INDIMED</span>
         </div>
       </div>
     </section>
@@ -226,11 +269,11 @@ import '../global.css';
           </div>
           <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
             <h3 class="font-bold text-[#314832] mb-2 text-lg">¿Tienen convenios con Fonasa o Isapre?</h3>
-            <p class="text-slate-600 text-sm">Sí, atendemos pacientes Fonasa y particulares. Si tienes Isapre, te entregamos la boleta para que puedas solicitar el reembolso correspondiente.</p>
+            <p class="text-slate-600 text-sm">Sí, atendemos pacientes Fonasa (pagando el valor preferencial de $5.700 en consultas generales) y particulares. Si tienes Isapre, te entregamos la boleta para solicitar tu reembolso.</p>
           </div>
           <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
             <h3 class="font-bold text-[#314832] mb-2 text-lg">¿Cuál es la política de cancelación?</h3>
-            <p class="text-slate-600 text-sm">Te pedimos reagendar o cancelar con al menos 24 horas de anticipación. Así podemos ofrecer ese espacio a otra paciente que lo necesite.</p>
+            <p class="text-slate-600 text-sm">Te pedimos reagendar o cancelar con al menos 24 horas de anticipación. Así podemos ofrecer ese valioso espacio a otra paciente que lo necesite.</p>
           </div>
         </div>
       </div>
