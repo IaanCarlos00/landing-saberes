@@ -142,46 +142,21 @@ import '../global.css';
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-extrabold text-center text-[#314832] mb-12">Nuestros Servicios</h2>
         
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-[#C19A6B] flex flex-col items-center text-center hover:shadow-md transition-shadow">
-            <div class="bg-[#faf8f5] p-3 rounded-full mb-4 text-[#314832]">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 6a4 4 0 1 1 0 8a4 4 0 0 1 0 -8z" /><path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" /></svg>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            { titulo: "Control Ginecológico", desc: "Atención integral para estudiantes, pacientes FONASA y particulares." },
+            { titulo: "Salud Reproductiva y Dispositivos", desc: "Inserción y extracción de DIU (hormonal/no hormonal) e implantes." },
+            { titulo: "Anticoncepción", desc: "Administración de anticonceptivos inyectables (Mesigyna, Novafem, Sayana)." },
+            { titulo: "Exámenes y Paneles", desc: "Toma de PAP, PCR VPH, paneles y toma de flujo." },
+            { titulo: "Control de Embarazo", desc: "Acompañamiento especializado para pacientes FONASA y particulares." },
+            { titulo: "Estética y Bienestar", desc: "Tratamientos de Plasmapen." },
+            { titulo: "Atención Online", desc: "Consultas remotas para mayor comodidad (FONASA y particular)." }
+          ].map((servicio) => (
+            <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-[#C19A6B] hover:shadow-md transition-shadow">
+              <h3 class="font-bold text-[#314832] mb-2 text-lg">{servicio.titulo}</h3>
+              <p class="text-sm text-slate-600 leading-relaxed">{servicio.desc}</p>
             </div>
-            <h3 class="font-bold text-[#314832] mb-2">Control Ginecológico</h3>
-            <p class="text-xs text-slate-500 mb-4 flex-grow">Control integral de salud y bienestar.</p>
-          </div>
-
-          <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-[#314832] flex flex-col items-center text-center hover:shadow-md transition-shadow">
-            <div class="bg-[#faf8f5] p-3 rounded-full mb-4 text-[#C19A6B]">
-               <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11l3 3l8 -8" /><path d="M20 12v6a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h9" /></svg>
-            </div>
-            <h3 class="font-bold text-[#314832] mb-2">Toma de PAP</h3>
-            <p class="text-xs text-slate-500 mb-4 flex-grow">Prevención y detección temprana.</p>
-          </div>
-
-          <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-[#C19A6B] flex flex-col items-center text-center hover:shadow-md transition-shadow">
-            <div class="bg-[#faf8f5] p-3 rounded-full mb-4 text-[#314832]">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" /><path d="M12 12l3 -3" /><path d="M12 12l-3 3" /></svg>
-            </div>
-            <h3 class="font-bold text-[#314832] mb-2">Asesoría Anticonceptiva</h3>
-            <p class="text-xs text-slate-500 mb-4 flex-grow">Información clara y personalizada.</p>
-          </div>
-
-          <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-[#314832] flex flex-col items-center text-center hover:shadow-md transition-shadow">
-            <div class="bg-[#faf8f5] p-3 rounded-full mb-4 text-[#C19A6B]">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M12 21a9 9 0 1 1 0 -18a9 9 0 0 1 0 18z" /><path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /></svg>
-            </div>
-            <h3 class="font-bold text-[#314832] mb-2">Salud Reproductiva</h3>
-            <p class="text-xs text-slate-500 mb-4 flex-grow">Acompañamiento en todas las etapas.</p>
-          </div>
-
-          <div class="bg-white p-6 rounded-2xl shadow-sm border-t-4 border-[#C19A6B] flex flex-col items-center text-center hover:shadow-md transition-shadow">
-            <div class="bg-[#faf8f5] p-3 rounded-full mb-4 text-[#314832]">
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M3 5m0 2a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2z" /><path d="M6 10h12" /><path d="M6 14h.01" /></svg>
-            </div>
-            <h3 class="font-bold text-[#314832] mb-2">Convenios</h3>
-            <p class="text-xs text-slate-500 mb-4 flex-grow">Atención por Fonasa e Isapres.</p>
-          </div>
+          ))}
         </div>
       </div>
     </section>
