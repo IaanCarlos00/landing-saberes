@@ -142,7 +142,7 @@ import '../global.css';
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-extrabold text-center text-[#314832] mb-12">Nuestros Servicios</h2>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
           {[
             { titulo: "Control Ginecológico", desc: "Atención integral personalizada para cada etapa de tu vida." },
             { titulo: "Salud Reproductiva", desc: "Gestión de dispositivos (DIU) e implantes con técnica segura." },
@@ -153,13 +153,14 @@ import '../global.css';
             { titulo: "Control de Embarazo", desc: "Acompañamiento cálido durante tu gestación." },
             { titulo: "Recambios", desc: "Actualización de dispositivos intrauterinos e implantes." }
           ].map((servicio) => (
-            <div class="group bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:border-[#C19A6B] hover:shadow-xl transition-all duration-300">
-              <div class="w-12 h-1 bg-[#C19A6B] mb-6 rounded-full group-hover:w-20 transition-all"></div>
-              <h3 class="text-xl font-bold text-[#314832] mb-3">{servicio.titulo}</h3>
-              <p class="text-slate-600 leading-relaxed text-sm">{servicio.desc}</p>
+            <div class="flex h-full"> <div class="w-full bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:border-[#C19A6B] hover:shadow-xl transition-all duration-300 flex flex-col">
+                <div class="w-12 h-1 bg-[#C19A6B] mb-6 rounded-full"></div>
+                <h3 class="text-xl font-bold text-[#314832] mb-3">{servicio.titulo}</h3>
+                <p class="text-slate-600 leading-relaxed text-sm flex-grow">{servicio.desc}</p>
+              </div>
             </div>
           ))}
-</div>
+        </div>
       </div>
     </section>
 
