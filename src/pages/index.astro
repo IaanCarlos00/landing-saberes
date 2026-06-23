@@ -6,12 +6,14 @@ import '../global.css';
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Centro Médico Saberes: Matronas en Concepción especializadas en salud integral femenina, anticoncepción, embarazo y más.">
+    <meta name="description" content="Centro Médico Saberes: Matronas en Concepción especializadas en salud integral femenina, anticoncepción, embarazo y más. Reserva tu hora aquí.">
+    <meta name="keywords" content="Matronas Concepción, Centro Médico Saberes, Salud femenina Concepción, Anticonceptivos Concepción, PAP Concepción">
+    <link rel="canonical" href="https://www.saberes.cl">
     <title>Centro Médico Saberes - Matronas en Concepción</title>
   </head>
   <body class="bg-white text-slate-700 font-sans antialiased flex flex-col min-h-screen">
     
-    <!-- HEADER -->
+    <!-- HEADER / BARRA DE NAVEGACIÓN -->
     <header class="flex justify-between items-center py-4 px-6 md:px-12 bg-white border-b border-slate-100 sticky top-0 z-50 shadow-sm">
       <div class="flex items-center gap-3">
         <img src="/logofinal.png" alt="Logo Saberes" class="h-10 w-auto" />
@@ -27,49 +29,165 @@ import '../global.css';
         <a href="#ubicacion" class="hover:text-[#C19A6B] transition-colors">Ubicación</a>
       </nav>
 
-      <a href="https://wa.me/56954365775" target="_blank" class="bg-[#314832] text-white px-6 py-2 rounded-full font-bold shadow-sm hover:bg-[#233524] transition-colors text-sm">
+      <!-- Botón Superior -->
+      <a 
+        href="https://wa.me/56954365775?text=Hola,%20vengo%20desde%20la%20página%20web%20y%20me%20gustaría%20agendar%20una%20cita." 
+        target="_blank"
+        class="bg-[#314832] text-white px-6 py-2 rounded-full font-bold shadow-sm hover:bg-[#233524] transition-colors text-sm"
+      >
         Agendar Cita
       </a>
     </header>
 
-    <!-- HERO -->
+    <!-- HERO SECTION -->
     <main class="flex flex-col md:flex-row min-h-[75vh] bg-[#faf8f5]">
       <div class="w-full md:w-1/2 p-8 md:p-16 lg:p-24 flex flex-col justify-center relative z-10">
-        <h1 class="text-4xl md:text-6xl font-extrabold text-[#314832] mb-6 leading-tight">Tu Salud en Manos Profesionales y Empáticas.</h1>
-        <p class="text-lg md:text-xl text-[#C19A6B] mb-10 font-bold">Centro Médico Saberes: Salud Integral para la Mujer en Concepción.</p>
-        <a href="https://wa.me/56954365775" target="_blank" class="inline-flex bg-[#314832] text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-[#233524] w-fit">Agendar por WhatsApp</a>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#314832] mb-6 tracking-tight leading-tight">
+          Tu Salud y Bienestar en Manos Profesionales y Empáticas.
+        </h1>
+        <p class="text-lg md:text-xl text-[#C19A6B] mb-10 font-bold">
+          Espacio de Matronería Integral para la Mujer en Concepción y online a todo Chile.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+          <a 
+            href="https://wa.me/56954365775?text=Hola,%20vengo%20desde%20la%20página%20web%20y%20me%20gustaría%20agendar%20una%20cita." 
+            target="_blank" 
+            class="inline-flex bg-[#314832] text-white px-8 py-4 rounded-full font-bold shadow-lg hover:bg-[#233524] transition-all gap-3 items-center"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#C19A6B]" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"></path></svg>
+            Agendar por WhatsApp
+          </a>
+        </div>
       </div>
-      <div class="w-full md:w-1/2 flex items-center justify-center p-8">
-        <img src="/foto-equipo.jpg" alt="Matronas" class="w-full h-auto object-cover rounded-[2rem] shadow-2xl max-h-[600px]" loading="lazy" />
+
+      <!-- Foto de equipo general o de ambiente -->
+      <div class="w-full md:w-1/2 flex items-center justify-center p-8 lg:p-16">
+        <img src="/foto-equipo.jpg" alt="Matronas Javiera y Valentina" class="w-full h-auto object-cover rounded-[2rem] shadow-2xl border-4 border-white aspect-square md:aspect-auto md:h-full max-h-[600px]" />
       </div>
     </main>
 
-    <!-- QUIÉNES SOMOS -->
-    <section id="quienes-somos" class="py-20 bg-[#314832] text-[#faf8f5] px-6">
-      <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-sm font-bold text-[#C19A6B] tracking-widest uppercase mb-2">Conócenos</h2>
-        <h3 class="text-4xl font-extrabold text-white mb-8">Quiénes Somos</h3>
-        <p class="text-lg leading-relaxed mb-6">En Saberes, buscamos caminar a tu lado en cada etapa, brindando salud con empatía.</p>
+    <!-- SECCIÓN QUIÉNES SOMOS Y EQUIPO -->
+    <section id="quienes-somos" class="py-20 bg-[#314832] px-6 text-[#faf8f5]">
+      <div class="max-w-6xl mx-auto">
+        
+        <!-- Texto de Introducción -->
+        <div class="max-w-4xl mx-auto text-center mb-16">
+          <h2 class="text-sm font-bold text-[#C19A6B] tracking-widest uppercase mb-2">Conócenos</h2>
+          <h3 class="text-3xl md:text-4xl font-extrabold text-white mb-8">Quiénes Somos</h3>
+          
+          <div class="space-y-6 text-lg leading-relaxed text-[#e8dccb] font-medium">
+            <p>
+              En Saberes, nuestro objetivo es caminar a tu lado en cada etapa de la vida, brindándote un espacio de salud donde te sientas verdaderamente escuchada, protegida y comprendida.
+            </p>
+            <p>
+              Como matronas entendemos que tu bienestar va mucho más allá de una consulta médica; por eso, nos dedicamos a ofrecerte una atención profundamente empática, cálida y profesional.
+            </p>
+            <p>
+              Queremos que dejes atrás las dudas o los temores y que encuentres en nosotras un apoyo cercano y transparente para cuidar de tu salud sexual y reproductiva.
+            </p>
+          </div>
+        </div>
+
+        <!-- Tarjetas Individuales del Equipo -->
+        <div class="grid lg:grid-cols-2 gap-8">
+          
+          <!-- Perfil Javiera -->
+          <div class="bg-[#faf8f5] p-8 rounded-3xl shadow-lg border-t-4 border-[#C19A6B] flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left text-slate-700 hover:shadow-xl transition-shadow">
+            <img src="/javiera-perfil.jpg" alt="Matrona Javiera Silva" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover object-center border-4 border-white shadow-md shrink-0" />
+            <div class="flex-grow">
+              <h4 class="text-2xl font-bold text-[#314832] mb-1">Javiera Silva</h4>
+              <p class="text-[#C19A6B] font-bold text-sm uppercase tracking-wide mb-4">Matrona</p>
+              
+              <p class="text-sm leading-relaxed text-slate-600 mb-4">
+                ¡Hola! Soy Javiera, matrona y cofundadora de Saberes. Desde que elegí este camino, mi gran motivación ha sido derribar las barreras del miedo y la desinformación en la salud de las mujeres. Para mí, cada consulta es una oportunidad de entregarte un espacio seguro, donde no existan tabúes y te sientas con la total libertad de preguntar lo que necesites. Me apasiona acompañarte de manera cercana, transparente y con base científica, asegurándome de que te vayas a casa sintiéndote empoderada, escuchada y dueña de tus propias decisiones de salud.
+              </p>
+              
+              <h5 class="text-sm font-bold text-[#314832] mb-2">Mi formación y especialidades:</h5>
+              <ul class="text-sm text-slate-600 space-y-1 text-left inline-block md:block">
+                <li>✔️ Matrona</li>
+                <li>✔️ Magíster en Salud Sexual y Reproductiva</li>
+                <li>✔️ Consejera de Lactancia Materna</li>
+                <li>✔️ (C) Diplomada en Sexología Clínica y Educativa</li>
+                <li>✔️ Capacitada para procedimientos de Plasmapen</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Perfil Valentina -->
+          <div class="bg-[#faf8f5] p-8 rounded-3xl shadow-lg border-t-4 border-[#C19A6B] flex flex-col md:flex-row gap-8 items-center md:items-start text-center md:text-left text-slate-700 hover:shadow-xl transition-shadow">
+            <img src="/foto-valentina.jpg" alt="Matrona Valentina Leal" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover object-center border-4 border-white shadow-md shrink-0" />
+            <div class="flex-grow">
+              <h4 class="text-2xl font-bold text-[#314832] mb-1">Valentina Leal</h4>
+              <p class="text-[#C19A6B] font-bold text-sm uppercase tracking-wide mb-4">Matrona</p>
+              
+              <p class="text-sm leading-relaxed text-slate-600 mb-4">
+                ¡Hola! Mi nombre es Valentina y soy matrona y cofundadora en este hermoso espacio llamado Saberes. Mi propósito de vida es resignificar la atención de matronería, transformándola en una experiencia cálida, humana y profundamente respetuosa. Creo firmemente que cada etapa que vives merece ser acompañada con contención, empatía y mucha dulzura.
+              </p>
+              
+              <h5 class="text-sm font-bold text-[#314832] mb-2">Mi formación y especialidades:</h5>
+              <ul class="text-sm text-slate-600 space-y-1 text-left inline-block md:block">
+                <li>✔️ Matrona y Madre</li>
+                <li>✔️ (C) Magíster en Dirección Estratégica en Salud</li>
+                <li>✔️ Consejera de Lactancia y Especialista en Destete</li>
+                <li>✔️ Capacitada para inserción de implantes subdérmicos y dispositivos intrauterinos (DIU)</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
       </div>
     </section>
 
-    <!-- SERVICIOS -->
+    <!-- SECCIÓN DE SERVICIOS -->
     <section id="servicios" class="py-20 bg-[#faf8f5] px-6">
       <div class="max-w-6xl mx-auto">
         <h2 class="text-3xl font-extrabold text-center text-[#314832] mb-12">Nuestros Servicios</h2>
-        <div class="flex flex-wrap justify-center gap-6">
+        
+        <div class="flex flex-wrap justify-center gap-6 items-stretch">
           {[
-            { titulo: "Atención Clínica", items: ["Control Ginecológico Anual: $5.700", "Control Prenatal: $5.700", "Asesoría Anticonceptiva: $5.700"] },
-            { titulo: "Telemedicina", items: ["Atención Online: $10.000", "Consejería Lactancia (Box): $35.000", "Consejería Lactancia (Domicilio): $45.000"] },
-            { titulo: "Muestras", items: ["PAP (con lab): $17.000", "VPH (con lab): $75.000", "Panel ITS: $62.000 (con lab)"] },
-            { titulo: "Anticonceptivos", items: ["Sayana Press: $22.000", "Mesigyna: $12.000", "Inyección simple: $5.000"] },
-            { titulo: "Dispositivos", items: ["T de Cobre: Inserción $55.000", "Implanon (Ins/Rec): $110k - $135k", "Asertia: $120k - $140k"] },
-            { titulo: "Estética", items: ["Plasmapen (Lesiones): $40.000 base"] }
-          ].map((s) => (
-            <div class="w-full sm:w-[48%] lg:w-[31%] bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex flex-col">
-              <h3 class="text-xl font-bold text-[#314832] mb-4">{s.titulo}</h3>
-              <ul class="space-y-2 text-sm text-slate-600">
-                {s.items.map(i => <li class="flex items-start gap-2">✓ {i}</li>)}
+            { 
+              titulo: "Atención Clínica (Fonasa)", 
+              desc: "Valor preferencial de $5.700 para tus controles principales:", 
+              items: ["Control Ginecológico Anual", "Control y Asesoría Anticonceptiva", "Consulta Preconcepcional", "Control Prenatal"]
+            },
+            { 
+              titulo: "Telemedicina y Lactancia", 
+              desc: "Acompañamiento técnico y amoroso a tu medida, donde estés:", 
+              items: ["Atención Online (Chat WhatsApp): $10.000", "Consejería Lactancia en Box: $35.000", "Consejería Lactancia a Domicilio: $45.000"]
+            },
+            { 
+              titulo: "Toma de Muestras Clínicas", 
+              desc: "Procedimientos delicados y respetuosos:", 
+              items: ["Papanicolau (PAP con lab): $17.000", "Genotipificación VPH (con lab): $75.000", "Panel ITS: $5.000 (sin lab) | $62.000 (con lab)", "Flujo Vaginal: $5.000 (sin lab) | $15.500 (con lab)"]
+            },
+            { 
+              titulo: "Anticonceptivos Inyectables", 
+              desc: "Administración segura bajo normas clínicas:", 
+              items: ["Sayana Press (incluye medicamento): $22.000", "Mesigyna (incluye medicamento): $12.000", "Administración Inyección (traes receta y ampolla): $5.000"]
+            },
+            { 
+              titulo: "Dispositivos Larga Duración", 
+              desc: "Ofrecemos colocación profesional y seguimiento cercano:", 
+              items: ["T de Cobre: Inserción $55.000 | Retiro $35.000", "Implanon: Inserción $110.000 | Recambio $135.000 | Retiro $35.000", "Asertia (DIU Hormonal): Inserción $120.000 | Recambio $140.000 | Retiro $35.000"]
+            },
+            { 
+              titulo: "Estética y Lesiones Genitales", 
+              desc: "Técnica novedosa de Plasmapen (Valor base: $40.000):", 
+              items: ["Extracción segura con anestesia local.", "Tratamiento ambulatorio para verrugas genitales, moluscos, condilomas y acrocordones."]
+            }
+          ].map((servicio) => (
+            <div class="w-full sm:w-[48%] lg:w-[31%] bg-white p-8 rounded-3xl shadow-sm border border-slate-100 hover:border-[#C19A6B] hover:shadow-lg transition-all duration-300 flex flex-col">
+              <div class="w-12 h-1 bg-[#C19A6B] mb-6 rounded-full"></div>
+              <h3 class="text-xl font-bold text-[#314832] mb-3">{servicio.titulo}</h3>
+              <p class="text-slate-600 text-sm mb-4 font-medium">{servicio.desc}</p>
+              <ul class="text-sm text-slate-600 space-y-3 flex-grow">
+                {servicio.items.map((item) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-[#C19A6B] mt-0.5 font-bold">✓</span>
+                    <span class="leading-relaxed">{item}</span>
+                  </li>
+                ))}
               </ul>
             </div>
           ))}
@@ -77,31 +195,16 @@ import '../global.css';
       </div>
     </section>
 
-    <!-- CONVENIOS -->
+    <!-- SECCIÓN DE CONVENIOS (Premium con Logos) -->
     <section id="convenios" class="py-16 bg-[#314832] px-6">
       <div class="max-w-6xl mx-auto text-center">
         <h2 class="text-sm font-bold text-[#C19A6B] uppercase tracking-[0.2em] mb-10">Convenios y Alianzas</h2>
-        <div class="flex flex-wrap justify-center gap-10">
-          <img src="/logo-fonasa.png" alt="Fonasa" class="h-12 grayscale hover:grayscale-0 opacity-80 transition" />
-          <img src="/logo-cpd.png" alt="CPD" class="h-12 grayscale hover:grayscale-0 opacity-80 transition" />
-          <img src="/logo-lab-koch.png" alt="Lab Koch" class="h-12 grayscale hover:grayscale-0 opacity-80 transition" />
-          <img src="/logo-indimed.png" alt="Indimed" class="h-12 grayscale hover:grayscale-0 opacity-80 transition" />
-        </div>
-      </div>
-    </section>
-
-    <!-- EDUCACIÓN -->
-    <section class="py-20 bg-[#faf8f5] px-6">
-      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-        <div>
-          <h3 class="text-xl font-bold text-[#314832] mb-6">Artículos de Interés</h3>
-          <a href="https://lavidamoderna.cl/2026/estigma-menstrual/" class="block bg-white p-6 rounded-2xl mb-4 hover:shadow-md">Estigma menstrual</a>
-          <a href="https://lavidamoderna.cl/2026/un-miedo-viral-vph/" class="block bg-white p-6 rounded-2xl hover:shadow-md">La verdad sobre el VPH</a>
-        </div>
-        <div class="bg-[#314832] p-8 rounded-3xl text-white">
-          <h3 class="text-xl font-bold mb-4">Podcast: Detrás del Biombo</h3>
-          <p class="mb-6 opacity-80">Conversaciones expertas sobre salud femenina.</p>
-          <a href="https://www.youtube.com/@Detr%C3%A1sdelbiombo/videos" class="bg-[#C19A6B] px-6 py-3 rounded-full font-bold">Ver en YouTube</a>
+        
+        <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16">
+          <img src="/logo-fonasa.png" alt="Fonasa" class="h-12 md:h-14 w-auto grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition-all duration-300" />
+          <img src="/logo-cpd.png" alt="CPD" class="h-12 md:h-14 w-auto grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition-all duration-300" />
+          <img src="/logo-lab-koch.png" alt="Lab Koch" class="h-12 md:h-14 w-auto grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition-all duration-300" />
+          <img src="/logo-indimed.png" alt="Indimed" class="h-12 md:h-14 w-auto grayscale hover:grayscale-0 opacity-80 hover:opacity-100 transition-all duration-300" />
         </div>
       </div>
     </section>
@@ -140,25 +243,93 @@ import '../global.css';
       </div>
     </section>
 
-    <!-- UBICACIÓN Y CONTACTO -->
-    <section id="ubicacion" class="py-20 px-6">
-      <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
-        <div class="h-96 rounded-2xl overflow-hidden"><iframe src="https://www.google.com/maps/embed?..." width="100%" height="100%" loading="lazy"></iframe></div>
-        <div>
-          <h2 class="text-3xl font-extrabold text-[#314832] mb-6">Hablemos</h2>
-          <p>O'Higgins Poniente 77, Concepción.</p>
-          <a href="https://wa.me/56954365775" class="mt-6 inline-block bg-[#314832] text-white px-8 py-4 rounded-full font-bold">Agendar por WhatsApp</a>
+    <!-- SECCIÓN UBICACIÓN Y CONTACTO -->
+    <section id="ubicacion" class="py-20 bg-white px-6">
+      <div class="max-w-6xl mx-auto flex flex-col md:flex-row gap-12">
+        
+        <!-- Mapa Corregido -->
+        <div class="w-full md:w-3/5 rounded-2xl overflow-hidden shadow-md border border-slate-200">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3192.548777977699!2d-73.05352822424564!3d-36.82767098492044!2m3!1f0!2f0!3f0!3m2!1i1024!2h768!4f13.1!3m3!1m2!1s0x9669d0d346380633%3A0x6a05e26715f210d7!2sO&#39;Higgins%2077%2C%20Concepci%C3%B3n!5e0!3m2!1ses!2scl!4v1719165000000!5m2!1ses!2scl" 
+            width="100%" 
+            height="100%" 
+            class="min-h-[350px]"
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+
+        <!-- Información de contacto -->
+        <div class="w-full md:w-2/5 flex flex-col justify-center">
+          <h2 class="text-3xl font-extrabold text-[#314832] mb-6">Ubicación y Contacto</h2>
+          <p class="text-slate-600 mb-6">Estamos ubicados en el corazón de Concepción:</p>
+          
+          <div class="space-y-4 mb-8">
+            <p class="flex items-start gap-3 text-slate-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#C19A6B] shrink-0" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 11a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" /><path d="M17.657 16.657l-4.243 4.243a2 2 0 0 1 -2.827 0l-4.244 -4.243a8 8 0 1 1 11.314 0z" /></svg>
+              <span>O'Higgins Poniente 77<br/>Edificio Futuro Center, Of. 804<br/>Concepción, Chile</span>
+            </p>
+            <p class="flex items-center gap-3 text-slate-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#C19A6B] shrink-0" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5l1.5 -2.5l5 2v4a2 2 0 0 1 -2 2a16 16 0 0 1 -15 -15a2 2 0 0 1 2 -2" /></svg>
+              <span>+569 54365775</span>
+            </p>
+            <p class="flex items-center gap-3 text-slate-600">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-[#C19A6B] shrink-0" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" /><path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" /><path d="M16.5 7.5l0 .01" /></svg>
+              <span><a href="https://instagram.com/saberes.cl" target="_blank" class="hover:text-[#C19A6B] transition-colors">@saberes.cl</a></span>
+            </p>
+          </div>
+
+          <a 
+            href="https://wa.me/56954365775?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Saberes." 
+            target="_blank" 
+            class="inline-flex bg-[#314832] text-white px-8 py-4 rounded-full font-bold shadow-md hover:bg-[#233524] transition-all gap-2 justify-center items-center w-full md:w-auto"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path d="M3 21l1.65 -3.8a9 9 0 1 1 3.4 2.9l-5.05 .9"></path><path d="M9 10a.5 .5 0 0 0 1 0v-1a.5 .5 0 0 0 -1 0v1a5 5 0 0 0 5 5h1a.5 .5 0 0 0 0 -1h-1a.5 .5 0 0 0 0 1"></path></svg>
+            Agendar por WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREGUNTAS FRECUENTES -->
+    <section class="py-20 bg-[#faf8f5] px-6">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-3xl font-extrabold text-[#314832] text-center mb-12">Preguntas Frecuentes</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+            <h3 class="font-bold text-[#314832] mb-2 text-lg">¿Cómo puedo agendar una hora?</h3>
+            <p class="text-slate-600 text-sm">Puedes hacerlo directamente a través de nuestro botón de WhatsApp. Te responderemos a la brevedad para coordinar el día y la hora.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+            <h3 class="font-bold text-[#314832] mb-2 text-lg">¿Atienden urgencias?</h3>
+            <p class="text-slate-600 text-sm">Saberes es un centro de consulta electiva. Ante una emergencia médica u obstétrica, te recomendamos dirigirte al servicio de urgencias más cercano.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+            <h3 class="font-bold text-[#314832] mb-2 text-lg">¿Tienen convenios con Fonasa o Isapre?</h3>
+            <p class="text-slate-600 text-sm">Sí, atendemos pacientes Fonasa (pagando el valor preferencial de $5.700 en consultas generales) y particulares. Si tienes Isapre, te entregamos la boleta para solicitar tu reembolso.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+            <h3 class="font-bold text-[#314832] mb-2 text-lg">¿Cuál es la política de cancelación?</h3>
+            <p class="text-slate-600 text-sm">Te pedimos reagendar o cancelar con al menos 24 horas de anticipación. Así podemos ofrecer ese valioso espacio a otra paciente que lo necesite.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- FOOTER -->
     <footer class="bg-[#233524] py-10 text-center text-[#e8dccb]">
-      <p>© 2026 Centro Médico Saberes.</p>
-      <div class="mt-4 text-xs space-x-4">
-        <a href="/privacidad" class="hover:underline">Privacidad</a>
-        <a href="/terminos" class="hover:underline">Términos y Condiciones</a>
+      <p class="text-sm">© 2026 Centro Médico Saberes. Matronas Javiera Silva y Valentina Leal.</p>
+      <p class="text-xs mt-2 opacity-70">"Contigo en cada etapa"</p>
+      
+      <!-- Enlaces Legales -->
+      <div class="mt-6 text-xs opacity-80 flex justify-center gap-4">
+        <a href="/privacidad" class="hover:text-[#C19A6B] hover:underline transition-colors">Política de Privacidad</a>
+        <span>|</span>
+        <a href="/terminos" class="hover:text-[#C19A6B] hover:underline transition-colors">Términos y Condiciones</a>
       </div>
     </footer>
+
   </body>
 </html>
