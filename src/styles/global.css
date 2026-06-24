@@ -622,6 +622,11 @@ nav a:hover::after { width: 100%; }
 .perfil-horario ul { list-style: none; }
 .perfil-horario li { font-size: 0.78rem; color: #5a6b5b; padding: 2px 0; display: flex; align-items: center; gap: 6px; }
 .perfil-horario li::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--dorado); flex-shrink: 0; }
+.perfil-horario li:last-child {
+  color: var(--dorado);
+  font-style: italic;
+  font-size: 0.73rem;
+}
 
 /* ========================
    SERVICIOS
