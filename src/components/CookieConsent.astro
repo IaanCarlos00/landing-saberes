@@ -1,0 +1,151 @@
+---
+// Componente reutilizable para consentimiento de cookies
+---
+
+<div id="cookie-consent-banner" class="fixed bottom-0 left-0 right-0 md:bottom-6 md:left-6 md:right-auto md:max-w-md bg-white rounded-t-3xl md:rounded-3xl shadow-2xl border border-slate-100 z-50 translate-y-full opacity-0 transition-all duration-700 overflow-hidden">
+  
+  <!-- Header -->
+  <div class="bg-gradient-to-r from-[#314832] to-[#233524] p-6 text-white">
+    <h3 class="text-lg font-bold mb-1">Respetamos tu Privacidad</h3>
+    <p class="text-sm opacity-90">Utilizamos cookies para mejorar tu experiencia</p>
+  </div>
+
+  <!-- Contenido -->
+  <div class="p-6 space-y-6">
+    
+    <!-- Descripción -->
+    <p class="text-sm text-slate-600 leading-relaxed">
+      Usamos cookies esenciales para que nuestro sitio funcione correctamente y analítica para entender cómo nos usan nuestras pacientes. 
+      <a href="/cookies" class="text-[#C19A6B] font-semibold hover:underline">Leer más</a>
+    </p>
+
+    <!-- Checkboxes de tipos de cookies -->
+    <div class="space-y-3 border-y border-slate-200 py-4">
+      
+      <!-- Cookies Esenciales (siempre activadas) -->
+      <div class="flex items-start gap-3 opacity-60">
+        <input type="checkbox" id="essential-cookies" checked disabled class="w-5 h-5 mt-0.5 accent-[#314832] cursor-not-allowed" />
+        <div class="flex-1">
+          <label for="essential-cookies" class="font-semibold text-slate-800 text-sm cursor-not-allowed">Cookies Esenciales</label>
+          <p class="text-xs text-slate-500 mt-0.5">Necesarias para que el sitio funcione</p>
+        </div>
+      </div>
+
+      <!-- Cookies Analíticas -->
+      <div class="flex items-start gap-3">
+        <input type="checkbox" id="analytics-cookies" class="w-5 h-5 mt-0.5 accent-[#314832] cursor-pointer" />
+        <div class="flex-1">
+          <label for="analytics-cookies" class="font-semibold text-slate-800 text-sm cursor-pointer">Analítica</label>
+          <p class="text-xs text-slate-500 mt-0.5">Nos ayuda a mejorar nuestro servicio</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Botones -->
+    <div class="flex gap-3">
+      <button id="btn-reject-cookies" class="flex-1 px-4 py-2.5 text-sm font-semibold text-slate-600 hover:text-slate-800 border border-slate-300 rounded-xl transition-colors hover:border-slate-400">
+        Rechazar
+      </button>
+      <button id="btn-accept-cookies" class="flex-1 px-4 py-2.5 text-sm font-semibold bg-[#314832] text-white rounded-xl hover:bg-[#233524] transition-colors">
+        Aceptar
+      </button>
+    </div>
+
+    <!-- Link a política -->
+    <p class="text-xs text-slate-500 text-center">
+      <a href="/privacidad" class="hover:text-[#C19A6B] transition-colors">Ver Política de Privacidad</a>
+    </p>
+
+  </div>
+
+</div>
+
+<script is:inline define:vars={{ gaId: import.meta.env.PUBLIC_GA_ID }}>
+  // Sistema de consentimiento de cookies para Saberes
+  
+  const CONSENT_KEY = 'saberes_cookie_consent';
+  const CONSENT_VERSION = '1.0';
+  const banner = document.getElementById('cookie-consent-banner');
+  const btnAccept = document.getElementById('btn-accept-cookies');
+  const btnReject = document.getElementById('btn-reject-cookies');
+  const analyticsCheckbox = document.getElementById('analytics-cookies');
+
+  // Función para mostrar banner
+  function showBanner() {
+    setTimeout(() => {
+      banner.classList.remove('translate-y-full', 'opacity-0');
+    }, 500);
+  }
+
+  // Función para ocultar banner
+  function hideBanner() {
+    banner.classList.add('translate-y-full', 'opacity-0');
+  }
+
+  // Función para cargar Google Analytics
+  function loadGoogleAnalytics() {
+    if (gaId) {
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+      document.head.appendChild(script);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      gtag('config', gaId);
+    }
+  }
+
+  // Verificar consentimiento previo
+  function checkPreviousConsent() {
+    const consent = localStorage.getItem(CONSENT_KEY);
+    
+    if (!consent) {
+      showBanner();
+    } else {
+      const consentData = JSON.parse(consent);
+      // Si acepta analítica, cargar GA
+      if (consentData.analytics) {
+        loadGoogleAnalytics();
+      }
+    }
+  }
+
+  // Guardar consentimiento
+  function saveConsent(analytics = false) {
+    const consentData = {
+      version: CONSENT_VERSION,
+      analytics: analytics,
+      timestamp: new Date().toISOString()
+    };
+    localStorage.setItem(CONSENT_KEY, JSON.stringify(consentData));
+    hideBanner();
+    
+    // Cargar GA si aceptó
+    if (analytics) {
+      loadGoogleAnalytics();
+    }
+  }
+
+  // Event listeners
+  btnAccept.addEventListener('click', () => {
+    const analyticsChecked = analyticsCheckbox.checked;
+    saveConsent(analyticsChecked);
+  });
+
+  btnReject.addEventListener('click', () => {
+    saveConsent(false); // Rechaza todo excepto esenciales
+  });
+
+  // Inicializar
+  checkPreviousConsent();
+</script>
+
+<style>
+  /* Asegurar que el banner esté visible correctamente */
+  #cookie-consent-banner {
+    will-change: transform, opacity;
+  }
+</style>
