@@ -1,0 +1,65 @@
+---
+// Equipo.astro
+const matronas = [
+  {
+    nombre: "Javiera Silva",
+    rol: "Matrona · Cofundadora",
+    foto: "/foto-javi.jpg",
+    alt: "Matrona Javiera Silva",
+    bio: "¡Hola! Soy Javiera, matrona y cofundadora de Saberes. Mi gran motivación es derribar las barreras del miedo y la desinformación en la salud de las mujeres. En cada consulta, creo un espacio seguro donde no existan tabúes.",
+    tags: ["Magíster Salud Sexual", "Lactancia Materna", "Sexología Clínica", "Plasmapen"],
+    horarios: [
+      "Lunes 16:00 – 19:30",
+      "Mar, Jue, Vie 14:30 – 19:30",
+      "Miércoles 12:00 – 19:30",
+    ],
+  },
+  {
+    nombre: "Valentina Leal",
+    rol: "Matrona · Cofundadora",
+    foto: "/foto-vale.jpg",
+    alt: "Matrona Valentina Leal",
+    bio: "¡Hola! Soy Valentina, matrona y cofundadora de Saberes. Mi propósito es resignificar la atención de matronería: cálida, humana y profundamente respetuosa. Cada etapa que vives merece contención y empatía.",
+    tags: ["Magíster Dirección Salud", "Lactancia y Destete", "Implantes", "Dispositivos Intrauterinos"],
+    horarios: [
+      "Lunes 08:30 – 15:30",
+      "Mar, Jue, Vie 08:30 – 13:30",
+      "Miércoles 08:30 – 11:30",
+    ],
+  },
+];
+---
+
+<section id="quienes-somos" class="quienes-section">
+  <div class="quienes-intro reveal">
+    <span class="section-label" style="color:#C19A6B; justify-content:center;">Conócenos</span>
+    <h2>Quiénes Somos</h2>
+    <p>
+      En Saberes, caminamos a tu lado en cada etapa de la vida. Nuestro espacio de salud es un
+      lugar donde te sentirás verdaderamente escuchada, protegida y comprendida — porque tu
+      bienestar va mucho más allá de una consulta médica.
+    </p>
+  </div>
+
+  <div class="quienes-grid">
+    {matronas.map((m, i) => (
+      <div class={`perfil-card reveal reveal-delay-${i + 1}`}>
+        <img src={m.foto} alt={m.alt} class="perfil-avatar" loading="lazy" />
+        <div class="perfil-info">
+          <h4>{m.nombre}</h4>
+          <p class="role">{m.rol}</p>
+          <p>{m.bio}</p>
+          <div class="perfil-tags">
+            {m.tags.map(tag => <span class="perfil-tag">{tag}</span>)}
+          </div>
+          <div class="perfil-horario">
+            <h6>Horarios</h6>
+            <ul>
+              {m.horarios.map(h => <li>{h}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

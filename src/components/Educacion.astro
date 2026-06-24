@@ -1,0 +1,57 @@
+---
+// Educacion.astro
+const articulos = [
+  {
+    href: "https://lavidamoderna.cl/2026/estigma-menstrual/",
+    thumb: "/preview-estigma.jpg",
+    titulo: "Estigma menstrual: Rompiendo tabúes",
+    desc: "La importancia de normalizar procesos naturales.",
+  },
+  {
+    href: "https://lavidamoderna.cl/2026/un-miedo-viral-vph/",
+    thumb: "/preview-vph.jpg",
+    titulo: "Un miedo viral: La verdad sobre el VPH",
+    desc: "Despejamos dudas sobre el virus del papiloma.",
+  },
+];
+---
+
+<section id="educacion" class="educacion-section">
+  <div class="educacion-header reveal">
+    <span class="section-label">Saber es poder</span>
+    <h2>Educación y Divulgación</h2>
+  </div>
+
+  <div class="educacion-grid">
+    <div class="articulo-col reveal reveal-delay-1">
+      <h3>En la Prensa</h3>
+      {articulos.map(a => (
+        <a href={a.href} target="_blank" class="articulo-card">
+          <div class="articulo-thumb" style={`background-image: url('${a.thumb}');`}></div>
+          <div>
+            <h4>{a.titulo}</h4>
+            <p>{a.desc}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <div class="video-col reveal reveal-delay-2">
+      <h3>Detrás del Biombo (YouTube)</h3>
+      <div class="video-wrapper">
+        <iframe
+          src="https://www.youtube.com/embed/Xi7c8O_f7Rw?si=j23L3p3UcioRqYQO"
+          title="Detrás del Biombo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          loading="lazy"
+        ></iframe>
+      </div>
+      <p class="video-caption">
+        Exploramos temas de salud femenina de manera cercana, humana y experta.
+        ¡Suscríbete para no perderte nada!
+      </p>
+    </div>
+  </div>
+</section>

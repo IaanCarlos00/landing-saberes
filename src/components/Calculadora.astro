@@ -1,0 +1,91 @@
+---
+// Calculadora.astro
+const servicios = [
+  { n: "Control Ginecológico Anual (Fonasa)",          v: 5700   },
+  { n: "Control Ginecológico Anual (Particular)",      v: 20000  },
+  { n: "Control y Asesoría Anticonceptiva (Fonasa)",   v: 5700   },
+  { n: "Consulta Preconcepcional (Fonasa)",            v: 5700   },
+  { n: "Control Prenatal (Fonasa)",                    v: 5700   },
+  { n: "Atención Online (Chat WhatsApp)",              v: 10000  },
+  { n: "Consejería de Lactancia a Domicilio",          v: 45000  },
+  { n: "Consejería de Lactancia en Box",               v: 35000  },
+  { n: "Papanicolau (PAP) - Con laboratorio",          v: 17000  },
+  { n: "Flujo Vaginal (sin laboratorio)",              v: 5000   },
+  { n: "Flujo Vaginal (con laboratorio)",              v: 15500  },
+  { n: "Panel de ITS (sin laboratorio)",               v: 5000   },
+  { n: "Panel de ITS (con laboratorio)",               v: 62000  },
+  { n: "Genotipificación VPH (con laboratorio)",       v: 75000  },
+  { n: "Sayana Press (incluye medicamento)",           v: 22000  },
+  { n: "Mesigyna (incluye medicamento)",               v: 12000  },
+  { n: "Administración de Inyecciones",                v: 5000   },
+  { n: "Inserción T de Cobre",                         v: 55000  },
+  { n: "Retiro T de Cobre o Asertia",                  v: 35000  },
+  { n: "Inserción Implanon",                           v: 110000 },
+  { n: "Recambio Implanon",                            v: 135000 },
+  { n: "Extracción Implanon",                          v: 35000  },
+  { n: "Inserción Asertia / DIU Hormonal",             v: 120000 },
+  { n: "Recambio Asertia",                             v: 140000 },
+  { n: "Electrocauterización Plasmapen",               v: 40000  },
+];
+---
+
+<section class="calculadora-section">
+  <div class="calculadora-header reveal">
+    <span class="section-label">Transparencia total</span>
+    <h2 id="calculadora">Cotiza tu Atención</h2>
+    <p>Selecciona los servicios que necesitas y te generamos un presupuesto en segundos.</p>
+  </div>
+
+  <div class="calculadora-box reveal">
+    <div class="calc-grid" id="calcGrid">
+      {servicios.map(s => (
+        <label class="calc-label">
+          <input type="checkbox" value={s.v} data-name={s.n} />
+          <div>
+            <div class="calc-name">{s.n}</div>
+            <div class="calc-price">${s.v.toLocaleString('es-CL')}</div>
+          </div>
+        </label>
+      ))}
+    </div>
+
+    <div class="calc-footer">
+      <div>
+        <div class="calc-total-label">Inversión Estimada</div>
+        <div class="calc-total-price">$<span id="total-precio">0</span></div>
+      </div>
+
+      <a id="btn-wsp" href="https://wa.me/56954365775" target="_blank" class="btn-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9l-5.05.9"/>
+          <path d="M9 10a.5.5 0 0 0 1 0v-1a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/>
+        </svg>
+        Cotizar y Agendar
+      </a>
+    </div>
+  </div>
+</section>
+
+<script is:inline>
+  function updateCalc() {
+    let total = 0;
+    const items = [];
+    document.querySelectorAll('#calcGrid input:checked').forEach(c => {
+      total += parseInt(c.value);
+      items.push(c.dataset.name);
+    });
+
+    const totalEl = document.getElementById('total-precio');
+    totalEl.style.transform = 'scale(1.05)';
+    totalEl.innerText = total.toLocaleString('es-CL');
+    setTimeout(() => { totalEl.style.transform = ''; }, 200);
+
+    const msg = items.length > 0
+      ? `Hola, vengo desde la página web y me gustaría agendar:\n${items.map(i => '- ' + i).join('\n')}\n\nTotal estimado: $${total.toLocaleString('es-CL')}`
+      : 'Hola, me gustaría agendar una consulta en Saberes.';
+    document.getElementById('btn-wsp').href =
+      'https://wa.me/56954365775?text=' + encodeURIComponent(msg);
+  }
+
+  document.getElementById('calcGrid').addEventListener('change', updateCalc);
+</script>

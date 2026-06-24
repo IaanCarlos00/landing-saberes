@@ -1,0 +1,22 @@
+---
+// Convenios.astro
+const logos = [
+  { src: "/logo-fonasa.png", alt: "Fonasa" },
+  { src: "/logo-cpd.png",    alt: "CPD" },
+  { src: "/logo-lab-koch.png", alt: "Lab Koch" },
+  { src: "/logo-indimed.png",  alt: "Indimed" },
+];
+---
+
+<section id="convenios" class="convenios-section">
+  <div class="convenios-inner">
+    <span class="convenios-label">Convenios y Alianzas</span>
+    <div class="logos-row reveal">
+      {logos.map(l => (
+        <div class="logo-item">
+          <img src={l.src} alt={l.alt} loading="lazy" />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

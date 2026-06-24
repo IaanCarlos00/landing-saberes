@@ -1,0 +1,81 @@
+---
+// Header.astro
+---
+
+<header id="mainHeader">
+  <a href="#" class="header-logo">
+    <img src="/logofinal.png" alt="Logo Saberes" loading="lazy" />
+    <span class="header-logo-text">Saberes</span>
+  </a>
+
+  <nav>
+    <a href="#quienes-somos">Quiénes Somos</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#calculadora">Cotizar</a>
+    <a href="#convenios">Convenios</a>
+    <a href="#educacion">Educación</a>
+    <a href="#ubicacion">Ubicación</a>
+  </nav>
+
+  <a
+    href="https://wa.me/56954365775?text=Hola,%20vengo%20desde%20la%20página%20web%20y%20me%20gustaría%20agendar%20una%20cita."
+    target="_blank"
+    class="btn-header"
+  >
+    Agendar Cita
+  </a>
+
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- Mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#quienes-somos" onclick="closeMobileMenu()">Quiénes Somos</a>
+  <a href="#servicios" onclick="closeMobileMenu()">Servicios</a>
+  <a href="#calculadora" onclick="closeMobileMenu()">Cotizar</a>
+  <a href="#convenios" onclick="closeMobileMenu()">Convenios</a>
+  <a href="#educacion" onclick="closeMobileMenu()">Educación</a>
+  <a href="#ubicacion" onclick="closeMobileMenu()">Ubicación</a>
+  <a
+    href="https://wa.me/56954365775?text=Hola,%20me%20gustaría%20agendar%20una%20cita."
+    target="_blank"
+    style="color: #C19A6B;"
+  >
+    Agendar Cita →
+  </a>
+</div>
+
+<script is:inline>
+  const header = document.getElementById('mainHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  const hamburger = document.getElementById('hamburgerBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  let menuOpen = false;
+
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('open', menuOpen);
+    const spans = hamburger.querySelectorAll('span');
+    if (menuOpen) {
+      spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+      spans[1].style.opacity = '0';
+      spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
+    } else {
+      spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+    }
+  });
+
+  function closeMobileMenu() {
+    menuOpen = false;
+    mobileMenu.classList.remove('open');
+    hamburger.querySelectorAll('span').forEach(s => {
+      s.style.transform = '';
+      s.style.opacity = '';
+    });
+  }
+</script>

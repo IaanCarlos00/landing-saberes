@@ -1,0 +1,37 @@
+---
+// FAQ.astro
+const faqs = [
+  {
+    q: "¿Cómo puedo agendar una hora?",
+    a: "Directamente a través de nuestro botón de WhatsApp. Te responderemos a la brevedad para coordinar el día y la hora que mejor te acomode.",
+  },
+  {
+    q: "¿Atienden urgencias?",
+    a: "Saberes es un centro de consulta electiva. Ante una emergencia médica u obstétrica, te recomendamos dirigirte al servicio de urgencias más cercano.",
+  },
+  {
+    q: "¿Tienen convenios con Fonasa o Isapre?",
+    a: "Sí, atendemos pacientes Fonasa (valor preferencial de $5.700 en consultas generales) y particulares. Si tienes Isapre, te entregamos la boleta para solicitar tu reembolso.",
+  },
+  {
+    q: "¿Cuál es la política de cancelación?",
+    a: "Te pedimos reagendar o cancelar con al menos 24 horas de anticipación, para poder ofrecer ese espacio a otra paciente que lo necesite.",
+  },
+];
+---
+
+<section class="faq-section">
+  <div class="faq-header reveal">
+    <span class="section-label">Resolvemos tus dudas</span>
+    <h2>Preguntas Frecuentes</h2>
+  </div>
+
+  <div class="faq-grid">
+    {faqs.map((f, i) => (
+      <div class={`faq-card reveal reveal-delay-${i + 1}`}>
+        <h3>{f.q}</h3>
+        <p>{f.a}</p>
+      </div>
+    ))}
+  </div>
+</section>

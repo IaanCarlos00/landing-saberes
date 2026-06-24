@@ -1,0 +1,18 @@
+---
+// StatsBar.astro
+const stats = [
+  { number: "2",    label: "Matronas Especialistas" },
+  { number: "+25",  label: "Servicios Disponibles" },
+  { number: "4",    label: "Convenios Activos" },
+  { number: "100%", label: "Atención Empática" },
+];
+---
+
+<div class="stats-bar">
+  {stats.map((s, i) => (
+    <div class={`stat-item reveal${i > 0 ? ` reveal-delay-${i}` : ''}`}>
+      <div class="stat-number">{s.number}</div>
+      <div class="stat-label">{s.label}</div>
+    </div>
+  ))}
+</div>
