@@ -1,0 +1,177 @@
+---
+// Resenas.astro
+// Carga reseñas desde el sistema interno de encuestas de Saberes.
+// Solo muestra encuestas respondidas que tengan comentario y estrellas.
+---
+
+<section class="resenas-section">
+  <div class="resenas-header reveal">
+    <span class="section-label">Lo que dicen nuestras pacientes</span>
+    <h2>Reseñas</h2>
+    <p>Experiencias reales de quienes ya nos conocen.</p>
+  </div>
+
+  <div class="resenas-track-wrapper">
+    <div class="resenas-track" id="resenasTrack">
+      <p class="resenas-estado">Cargando reseñas...</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .resenas-section {
+    background: var(--crema-dark);
+    padding: 100px 0;
+    overflow: hidden;
+  }
+
+  .resenas-header {
+    text-align: center;
+    padding: 0 24px;
+    margin-bottom: 56px;
+  }
+  .resenas-header h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--verde-dark);
+    margin-bottom: 12px;
+  }
+  .resenas-header p {
+    color: var(--texto-soft);
+    font-size: 1.05rem;
+  }
+
+  .resenas-track-wrapper {
+    overflow: hidden;
+  }
+
+  .resenas-track {
+    display: flex;
+    gap: 24px;
+    width: max-content;
+    padding: 12px 24px;
+  }
+
+  /* Solo anima cuando hay tarjetas cargadas */
+  .resenas-track.animando {
+    animation: scrollTrack 35s linear infinite;
+  }
+  .resenas-track.animando:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes scrollTrack {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Tarjeta */
+  .resena-card {
+    background: white;
+    border-radius: 20px;
+    padding: 28px 32px;
+    width: 320px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 24px var(--sombra);
+    border: 1px solid rgba(193,154,107,0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: box-shadow 0.25s;
+    cursor: default;
+  }
+  .resena-card:hover {
+    box-shadow: 0 8px 36px rgba(49,72,50,0.16);
+  }
+
+  .resena-estrellas {
+    display: flex;
+    gap: 3px;
+  }
+  .estrella      { font-size: 1.05rem; color: var(--dorado); }
+  .estrella.vacia { color: #ddd; }
+
+  .resena-texto {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: var(--texto);
+    flex: 1;
+  }
+
+  .resena-nombre {
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: var(--verde);
+    letter-spacing: 0.03em;
+  }
+
+  .resenas-estado {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--texto-soft);
+    font-size: 0.95rem;
+    width: 100%;
+  }
+</style>
+
+<script is:inline>
+  const ENCUESTAS_URL = 'https://centro-medico-saberes-production.up.railway.app/encuestas';
+
+  async function cargarResenas() {
+    const track = document.getElementById('resenasTrack');
+    if (!track) return;
+
+    let resenas = [];
+
+    try {
+      const res = await fetch(ENCUESTAS_URL);
+      if (!res.ok) throw new Error('Error de red');
+      const todas = await res.json();
+
+      // Solo encuestas respondidas con comentario y estrellas
+      resenas = todas.filter(e =>
+        e.estado === 'respondida' &&
+        e.comentario &&
+        e.comentario.trim() !== '' &&
+        e.estrellas
+      );
+    } catch (e) {
+      track.innerHTML = '';
+      return;
+    }
+
+    if (!resenas.length) {
+      track.innerHTML = '';
+      return;
+    }
+
+    // Nombre anónimo: "María G." — solo primera letra del apellido
+    function nombreAnonimo(nombre, apellido) {
+      const n = (nombre || '').trim().split(' ')[0];
+      const a = (apellido || '').trim()[0];
+      return a ? `${n} ${a}.` : n;
+    }
+
+    function tarjetaHTML(r) {
+      const pts = Math.max(1, Math.min(5, Math.round(r.estrellas)));
+      const estrellas = Array.from({ length: 5 }, (_, i) =>
+        `<span class="estrella${i < pts ? '' : ' vacia'}">★</span>`
+      ).join('');
+      const nombre = nombreAnonimo(r.paciente_nombre, r.paciente_apellido);
+      return `
+        <div class="resena-card">
+          <div class="resena-estrellas">${estrellas}</div>
+          <p class="resena-texto">${r.comentario}</p>
+          <span class="resena-nombre">— ${nombre}</span>
+        </div>
+      `;
+    }
+
+    // Duplicamos para efecto infinito
+    const html = [...resenas, ...resenas].map(tarjetaHTML).join('');
+    track.innerHTML = html;
+    track.classList.add('animando');
+  }
+
+  cargarResenas();
+</script>
