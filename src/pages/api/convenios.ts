@@ -15,6 +15,14 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
 
+    if (!RESEND_API_KEY) {
+      console.error('RESEND_API_KEY no está configurada');
+      return new Response(
+        JSON.stringify({ error: 'Configuración de servidor incompleta' }),
+        { status: 500 }
+      );
+    }
+
     // HTML del email para las matronas
     const emailHTML = `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -90,41 +98,46 @@ export const POST: APIRoute = async ({ request }) => {
     `;
 
     // Enviar email a las matronas
-    const matronasEmail = await fetch('https://api.resend.com/emails', {
+    const matronasRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'convenios@saberes.cl',
+        from: 'Saberes Convenios <onboarding@resend.dev>', // ← usa este while el dominio no esté verificado
         to: 'saberesspa@gmail.com',
+        reply_to: data.contacto_email,                    // ← al responder, va directo al contacto
         subject: `Nueva Solicitud de Convenio - ${data.empresa_nombre}`,
         html: emailHTML,
       }),
     });
 
-    if (!matronasEmail.ok) {
-      throw new Error('Error enviando email a matronas');
+    if (!matronasRes.ok) {
+      const errBody = await matronasRes.json();
+      console.error('Error Resend (matronas):', errBody);
+      throw new Error(`Resend error: ${errBody.message || matronasRes.status}`);
     }
 
     // Enviar confirmación al contacto
-    const contactoEmail = await fetch('https://api.resend.com/emails', {
+    const contactoRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'convenios@saberes.cl',
+        from: 'Saberes <onboarding@resend.dev>', // ← mismo from por ahora
         to: data.contacto_email,
         subject: 'Hemos recibido tu solicitud de convenio - Saberes',
         html: confirmHTML,
       }),
     });
 
-    if (!contactoEmail.ok) {
-      throw new Error('Error enviando confirmación');
+    if (!contactoRes.ok) {
+      const errBody = await contactoRes.json();
+      console.error('Error Resend (contacto):', errBody);
+      // No lanzamos error aquí — el email principal ya llegó
     }
 
     return new Response(
@@ -134,7 +147,7 @@ export const POST: APIRoute = async ({ request }) => {
   } catch (error) {
     console.error('Error en API convenios:', error);
     return new Response(
-      JSON.stringify({ error: 'Error al procesar la solicitud' }),
+      JSON.stringify({ error: error instanceof Error ? error.message : 'Error al procesar la solicitud' }),
       { status: 500 }
     );
   }
