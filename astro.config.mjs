@@ -5,7 +5,12 @@ import vercel from '@astrojs/vercel/serverless';
 
 export default defineConfig({
   output: 'server',
-  adapter: vercel(),
+  adapter: vercel({
+    functionPerRoute: false,
+  }),
+  image: {
+    service: { entrypoint: 'astro/assets/services/noop' }
+  },
   vite: {
     plugins: [tailwindcss()],
   }
