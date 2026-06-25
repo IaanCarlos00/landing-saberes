@@ -1,0 +1,309 @@
+/* Servicios-Futurista.css */
+
+.servicios-futurista {
+  position: relative;
+  padding: 100px 40px;
+  background: linear-gradient(180deg, #faf8f5 0%, #f5f0e8 100%);
+  overflow: hidden;
+}
+
+.servicios-bg-effect {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gradient-mesh-1 {
+  position: absolute;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(49, 72, 50, 0.08) 0%, transparent 70%);
+  top: -15%;
+  right: -20%;
+  filter: blur(60px);
+  animation: meshDrift 20s ease-in-out infinite;
+}
+
+.gradient-mesh-2 {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(193, 154, 107, 0.08) 0%, transparent 70%);
+  bottom: -10%;
+  left: -15%;
+  filter: blur(60px);
+  animation: meshDrift 25s ease-in-out infinite -5s;
+}
+
+@keyframes meshDrift {
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(30px, -40px); }
+  66% { transform: translate(-30px, 40px); }
+}
+
+.servicios-container {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.servicios-header-futurista {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-label-futurista {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(49, 72, 50, 0.08);
+  border: 1px solid rgba(49, 72, 50, 0.15);
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--verde);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+  backdrop-filter: blur(10px);
+}
+
+.label-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--dorado);
+  border-radius: 50%;
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.servicios-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 56px;
+  font-weight: 900;
+  color: var(--texto);
+  margin-bottom: 24px;
+  line-height: 1.2;
+}
+
+.title-highlight {
+  background: linear-gradient(135deg, var(--verde) 0%, var(--dorado) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-style: italic;
+}
+
+.servicios-description {
+  font-size: 18px;
+  color: var(--texto-soft);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.servicios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 24px;
+  margin-bottom: 80px;
+}
+
+.servicio-card-futurista {
+  position: relative;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(49, 72, 50, 0.1);
+  border-radius: 20px;
+  padding: 40px;
+  backdrop-filter: blur(20px);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  overflow: hidden;
+}
+
+.servicio-card-futurista:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(49, 72, 50, 0.2);
+  transform: translateY(-16px) rotateX(5deg) rotateZ(-1deg);
+  box-shadow: 0 40px 80px rgba(49, 72, 50, 0.15);
+}
+
+.card-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(193, 154, 107, 0.3) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+.servicio-card-futurista:hover .card-glow {
+  opacity: 1;
+}
+
+.card-border-effect {
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, transparent 0%, rgba(193, 154, 107, 0.3) 50%, transparent 100%);
+  border-radius: 20px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.servicio-card-futurista:hover .card-border-effect {
+  opacity: 1;
+}
+
+.card-content {
+  position: relative;
+  z-index: 2;
+}
+
+.icon-wrapper {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 24px;
+  perspective: 1000px;
+}
+
+.icon-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(49, 72, 50, 0.1) 0%, rgba(193, 154, 107, 0.1) 100%);
+  border-radius: 16px;
+  transition: all 0.4s ease;
+}
+
+.servicio-card-futurista:hover .icon-bg {
+  transform: rotateY(10deg) rotateX(-10deg);
+  background: linear-gradient(135deg, rgba(49, 72, 50, 0.2) 0%, rgba(193, 154, 107, 0.2) 100%);
+}
+
+.icon-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.servicio-card-futurista:hover .icon-text {
+  transform: scale(1.2) rotateZ(10deg);
+}
+
+.card-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 12px;
+  transition: color 0.3s ease;
+}
+
+.servicio-card-futurista:hover .card-title {
+  color: var(--verde);
+}
+
+.card-desc {
+  font-size: 14px;
+  color: var(--texto-soft);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.card-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card-items li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--texto-soft);
+  line-height: 1.5;
+}
+
+.checkmark {
+  color: var(--dorado);
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: 16px;
+  transition: transform 0.3s ease;
+}
+
+.servicio-card-futurista:hover .checkmark {
+  transform: scale(1.3) rotate(10deg);
+}
+
+.servicios-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 48px;
+  background: linear-gradient(135deg, rgba(49, 72, 50, 0.05) 0%, rgba(193, 154, 107, 0.05) 100%);
+  border: 2px solid rgba(49, 72, 50, 0.1);
+  border-radius: 24px;
+  backdrop-filter: blur(20px);
+}
+
+.cta-content h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--texto);
+  margin-bottom: 12px;
+}
+
+.cta-content p {
+  font-size: 16px;
+  color: var(--texto-soft);
+  max-width: 500px;
+}
+
+.cta-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, var(--verde) 0%, var(--verde-dark) 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(49, 72, 50, 0.2);
+}
+
+.cta-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px rgba(49, 72, 50, 0.3);
+}
+
+@media (max-width: 768px) {
+  .servicios-futurista { padding: 60px 24px; }
+  .servicios-title { font-size: 40px; }
+  .servicios-grid { grid-template-columns: 1fr; gap: 16px; }
+  .servicio-card-futurista { padding: 24px; }
+  .servicios-cta { flex-direction: column; text-align: center; padding: 32px; gap: 20px; }
+  .cta-content p { max-width: none; }
+}

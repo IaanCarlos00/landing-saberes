@@ -1,69 +1,239 @@
 ---
-// Equipo.astro
-const matronas = [
-  {
-    nombre: "Javiera Silva",
-    rol: "Matrona · Cofundadora",
-    foto: "/foto-javi.jpg",
-    alt: "Matrona Javiera Silva",
-    bio: "¡Hola! Soy Javiera, matrona y cofundadora de Saberes. Mi gran motivación es derribar las barreras del miedo y la desinformación en la salud de las mujeres. En cada consulta, creo un espacio seguro donde no existan tabúes.",
-    tags: ["Magíster Salud Sexual", "Lactancia Materna", "Sexología Clínica", "Plasmapen"],
-    horarios: [
-      "Lunes 16:00 – 19:30",
-      "Mar, Jue, Vie 14:30 – 19:30",
-      "Miércoles 12:00 – 19:30",
-      "Sábado según agenda",
-      "Sujeto a cambios de equipo",
-    ],
-  },
-  {
-    nombre: "Valentina Leal",
-    rol: "Matrona · Cofundadora",
-    foto: "/foto-vale.jpg",
-    alt: "Matrona Valentina Leal",
-    bio: "¡Hola! Soy Valentina, matrona y cofundadora de Saberes. Mi propósito es resignificar la atención de matronería: cálida, humana y profundamente respetuosa. Cada etapa que vives merece contención y empatía.",
-    tags: ["Magíster Dirección Salud", "Lactancia y Destete", "Implantes", "Dispositivos Intrauterinos"],
-    horarios: [
-      "Lunes 08:30 – 15:30",
-      "Mar, Jue, Vie 08:30 – 13:30",
-      "Miércoles 08:30 – 11:30",
-      "Sábado según agenda",
-      "Sujeto a cambios de equipo",
-    ],
-  },
-];
+import '../styles/Equipo-Futurista.css';
+import '../styles/Equipo-Schedule-PRO.css';
 ---
 
-<section id="quienes-somos" class="quienes-section">
-  <div class="quienes-intro reveal">
-    <span class="section-label" style="color:#C19A6B; justify-content:center;">Conócenos</span>
-    <h2>Quiénes Somos</h2>
-    <p>
-      En Saberes, caminamos a tu lado en cada etapa de la vida. Nuestro espacio de salud es un
-      lugar donde te sentirás verdaderamente escuchada, protegida y comprendida — porque tu
-      bienestar va mucho más allá de una consulta médica.
-    </p>
+<section class="equipo-futurista">
+  <div class="equipo-bg">
+    <div class="bg-shape bg-shape-1"></div>
+    <div class="bg-shape bg-shape-2"></div>
   </div>
 
-  <div class="quienes-grid">
-    {matronas.map((m, i) => (
-      <div class={`perfil-card reveal reveal-delay-${i + 1}`}>
-        <img src={m.foto} alt={m.alt} class="perfil-avatar" loading="lazy" />
-        <div class="perfil-info">
-          <h4>{m.nombre}</h4>
-          <p class="role">{m.rol}</p>
-          <p>{m.bio}</p>
-          <div class="perfil-tags">
-            {m.tags.map(tag => <span class="perfil-tag">{tag}</span>)}
+  <div class="equipo-container">
+    <div class="equipo-header reveal">
+      <span class="section-label">Conoce a nuestro equipo</span>
+      <h2>Las Matronas de Saberes</h2>
+      <p>Profesionales especializadas, dedicadas y apasionadas por tu salud integral.</p>
+    </div>
+
+    <div class="matronas-grid">
+      {/* JAVIERA */}
+      <div class="matrona-card reveal reveal-delay-1">
+        <div class="card-wrapper">
+          <div class="image-container">
+            <div class="image-overlay"></div>
+            <img src="/foto-javiera.jpg" alt="Javiera Silva - Matrona" loading="lazy" />
+            
+            {/* OVERLAY CON HORARIOS - JAVIERA */}
+            <div class="schedule-overlay">
+              <div class="schedule-content">
+                <div class="schedule-title">
+                  <span class="schedule-icon">⏰</span>
+                  Horarios
+                </div>
+                <div class="schedule-items">
+                  <div class="schedule-item">
+                    <span class="schedule-day">Lunes</span>
+                    <span class="schedule-dot"></span>
+                    <span class="schedule-time">16:00 - 19:30</span>
+                  </div>
+                  <div class="schedule-item">
+                    <span class="schedule-day">Martes</span>
+                    <span class="schedule-dot"></span>
+                    <span class="schedule-time">14:30 - 19:30</span>
+                  </div>
+                  <div class="schedule-item">
+                    <span class="schedule-day">Miércoles</span>
+                    <span class="schedule-dot"></span>
+                    <span class="schedule-time">12:00 - 19:30</span>
+                  </div>
+                  <div class="schedule-item">
+                    <span class="schedule-day">Jueves</span>
+                    <span class="schedule-dot"></span>
+                    <span class="schedule-time">14:30 - 19:30</span>
+                  </div>
+                  <div class="schedule-item">
+                    <span class="schedule-day">Viernes</span>
+                    <span class="schedule-dot"></span>
+                    <span class="schedule-time">14:30 - 19:30</span>
+                  </div>
+                  <div class="schedule-item">
+                    <span class="schedule-day">Sábado</span>
+                    <span class="schedule-dot"></span>
+                    <span class="schedule-time">Disponibilidad</span>
+                  </div>
+                </div>
+                <div class="schedule-availability">
+                  <span class="availability-dot"></span>
+                  Sujeto a disponibilidad
+                </div>
+                <div class="schedule-cta">
+                  Confirma tu hora por <strong>WhatsApp</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="image-accent accent-1"></div>
+            <div class="image-accent accent-2"></div>
           </div>
-          <div class="perfil-horario">
-            <h6>Horarios</h6>
-            <ul>
-              {m.horarios.map(h => <li>{h}</li>)}
-            </ul>
+
+          <div class="matrona-info">
+            <h3 class="matrona-nombre">Javiera Silva</h3>
+            <p class="matrona-role">Matrona · Cofundadora</p>
+
+            <div class="matrona-specialties">
+              <span class="specialty-badge">Magíster Salud Sexual</span>
+              <span class="specialty-badge">Lactancia Materna</span>
+              <span class="specialty-badge">Sexología Clínica</span>
+              <span class="specialty-badge">Plasmapen</span>
+            </div>
+
+            <p class="matrona-bio">
+              ¡Hola! Soy Javiera, matrona y cofundadora de Saberes. Mi gran motivación es derribar las barreras del miedo y la desinformación en la salud de las mujeres.
+            </p>
+
+            <div class="matrona-stats">
+              <div class="stat">
+                <div class="stat-value">500+</div>
+                <div class="stat-label">Pacientes</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value">98%</div>
+                <div class="stat-label">Satisfacción</div>
+              </div>
+            </div>
+
+            <a href="https://wa.me/56954365775" class="matrona-cta">
+              <span>Contactar</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
           </div>
         </div>
       </div>
-    ))}
+
+      {/* VALENTINA */}
+      <div class="matrona-card reveal reveal-delay-2">
+        <div class="card-wrapper">
+          <div class="image-container">
+            <div class="image-overlay"></div>
+            <img src="/foto-vale.jpg" alt="Valentina - Matrona" loading="lazy" />
+            
+            {/* OVERLAY CON HORARIOS - VALENTINA */}
+            <div class="schedule-overlay">
+              <div class="schedule-content">
+                <div class="schedule-title">
+                  <span class="schedule-icon">⏰</span>
+                  Horarios
+                </div>
+                <div class="schedule-items">
+                  <div class="schedule-item">
+                    <span class="schedule-day">Lunes</span>
+                    <span class="schedule-dot"></span>
+                    <span class="schedule-time">08:30 - 15:30</span>
+                  </div>
+                  <div class="schedule-item">
+                    <span class="schedule-day">Martes</span>
+                    <span class="schedule-dot"></span>
+                    <span class="schedule-time">08:30 - 13:30</span>
+                  </div>
+                  <div class="schedule-item">
+                    <span class="schedule-day">Miércoles</span>
+                    <span class="schedule-dot"></span>
+                    <span class="schedule-time">08:30 - 11:30</span>
+                  </div>
+                  <div class="schedule-item">
+                    <span class="schedule-day">Jueves</span>
+                    <span class="schedule-dot"></span>
+                    <span class="schedule-time">08:30 - 13:30</span>
+                  </div>
+                  <div class="schedule-item">
+                    <span class="schedule-day">Viernes</span>
+                    <span class="schedule-dot"></span>
+                    <span class="schedule-time">08:30 - 13:30</span>
+                  </div>
+                  <div class="schedule-item">
+                    <span class="schedule-day">Sábado</span>
+                    <span class="schedule-dot"></span>
+                    <span class="schedule-time">Disponibilidad</span>
+                  </div>
+                </div>
+                <div class="schedule-availability">
+                  <span class="availability-dot"></span>
+                  Sujeto a disponibilidad
+                </div>
+                <div class="schedule-cta">
+                  Confirma tu hora por <strong>WhatsApp</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="image-accent accent-3"></div>
+            <div class="image-accent accent-4"></div>
+          </div>
+
+          <div class="matrona-info">
+            <h3 class="matrona-nombre">Valentina</h3>
+            <p class="matrona-role">Matrona · Cofundadora</p>
+
+            <div class="matrona-specialties">
+              <span class="specialty-badge">Magíster Dirección Salud</span>
+              <span class="specialty-badge">Lactancia y Destete</span>
+              <span class="specialty-badge">Implantes</span>
+              <span class="specialty-badge">Dispositivos Intrauterinos</span>
+            </div>
+
+            <p class="matrona-bio">
+              Soy Valentina, matrona con vocación de acompañamiento. Me especializo en brindar atención personalizada y respetuosa en cada etapa de la vida.
+            </p>
+
+            <div class="matrona-stats">
+              <div class="stat">
+                <div class="stat-value">500+</div>
+                <div class="stat-label">Consultas</div>
+              </div>
+              <div class="stat">
+                <div class="stat-value">10+</div>
+                <div class="stat-label">Años Exp</div>
+              </div>
+            </div>
+
+            <a href="https://wa.me/56954365775" class="matrona-cta">
+              <span>Contactar</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="equipo-valores reveal">
+      <h3>Nuestros Valores</h3>
+      <div class="valores-grid">
+        <div class="valor-item">
+          <div class="valor-icon">🤝</div>
+          <h4>Empatía</h4>
+          <p>Nos ponemos en tu lugar en cada momento</p>
+        </div>
+        <div class="valor-item">
+          <div class="valor-icon">💪</div>
+          <h4>Profesionalismo</h4>
+          <p>Estándares clínicos de máxima calidad</p>
+        </div>
+        <div class="valor-item">
+          <div class="valor-icon">🌟</div>
+          <h4>Excelencia</h4>
+          <p>Mejora continua en nuestro servicio</p>
+        </div>
+        <div class="valor-item">
+          <div class="valor-icon">🔒</div>
+          <h4>Confidencialidad</h4>
+          <p>Tu privacidad es nuestra prioridad</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>

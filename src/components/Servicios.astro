@@ -1,87 +1,102 @@
 ---
-// Servicios.astro
+import '../styles/Servicios-Futurista.css';
+
 const servicios = [
   {
     icono: "🏥",
     titulo: "Atención Clínica",
     desc: "Control Ginecológico · Anticonceptiva · Preconcepcional · Prenatal",
-    items: [
-      "Fonasa: $5.700",
-      "Particular: $20.000",
-      "Estudiantes: $12.000 (con credencial)",
-    ],
+    items: ["Fonasa: $5.700", "Particular: $20.000", "Estudiantes: $12.000"],
   },
   {
     icono: "💻",
-    titulo: "Telemedicina y Lactancia",
+    titulo: "Telemedicina",
     desc: "Acompañamiento técnico y amoroso a tu medida, donde estés:",
-    items: [
-      "Atención Online (Chat WhatsApp): $10.000",
-      "Consejería Lactancia en Box: $35.000",
-      "Consejería Lactancia a Domicilio: $45.000",
-    ],
+    items: ["Atención Online: $10.000", "Consejería Lactancia: $35.000", "A Domicilio: $45.000"],
   },
   {
     icono: "🔬",
-    titulo: "Toma de Muestras Clínicas",
+    titulo: "Muestras Clínicas",
     desc: "Procedimientos delicados y respetuosos:",
-    items: [
-      "Papanicolau (PAP con lab): $17.000",
-      "Genotipificación VPH (con lab): $75.000",
-      "Panel ITS: $5.000 (solo toma de muestra, sin laboratorio), $62.000 (con laboratorio)",
-      "Flujo Vaginal: $5.000 (solo toma de muestra, sin laboratorio), $15.500 (con laboratorio)",
-    ],
+    items: ["PAP con lab: $17.000", "Genotipificación VPH: $75.000", "Panel ITS: $5.000 - $62.000"],
   },
   {
     icono: "💉",
-    titulo: "Anticonceptivos Inyectables",
+    titulo: "Anticonceptivos",
     desc: "Administración segura bajo normas clínicas:",
-    items: [
-      "Sayana Press (incluye medicamento): $22.000",
-      "Mesigyna (incluye medicamento): $12.000",
-      "Administración (traes receta y ampolla): $5.000",
-    ],
+    items: ["Sayana Press: $22.000", "Mesigyna: $12.000", "Administración: $5.000"],
   },
   {
     icono: "🔷",
-    titulo: "Dispositivos Larga Duración",
+    titulo: "Dispositivos Duración",
     desc: "Colocación profesional y seguimiento cercano:",
-    items: [
-      "T de Cobre: Inserción $55.000 / Retiro $35.000",
-      "Implanon: Inserción $110.000",
-      "Asertia (DIU Hormonal): Inserción $120.000",
-    ],
+    items: ["T de Cobre: $55.000", "Implanon: $110.000", "DIU Hormonal: $120.000"],
   },
   {
     icono: "✨",
-    titulo: "Estética y Lesiones Genitales",
-    desc: "Técnica novedosa de Plasmapen (Valor base: $40.000):",
-    items: [
-      "Extracción segura con anestesia local",
-      "Verrugas, moluscos y condilomas",
-      "Acrocordones",
-    ],
+    titulo: "Estética Avanzada",
+    desc: "Técnica novedosa de Plasmapen con resultados profesionales:",
+    items: ["Extracción segura", "Verrugas, moluscos, condilomas", "Desde $40.000"],
   },
 ];
 ---
 
-<section id="servicios" class="servicios-section">
-  <div class="servicios-header reveal">
-    <span class="section-label">Lo que ofrecemos</span>
-    <h2>Nuestros Servicios</h2>
-    <p>Atención integral con los más altos estándares clínicos, en un espacio cálido y sin juicios.</p>
+<section id="servicios" class="servicios-futurista">
+  <div class="servicios-bg-effect">
+    <div class="gradient-mesh-1"></div>
+    <div class="gradient-mesh-2"></div>
   </div>
 
-  <div class="servicios-grid">
-    {servicios.map((s, i) => (
-      <div class={`servicio-card reveal reveal-delay-${(i % 3) + 1}`}>
-        <div class="servicio-icon">{s.icono}</div>
-        <h3>{s.titulo}</h3>
-        <p class="desc">{s.desc}</p>
-        <ul>
-          {s.items.map(item => <li>{item}</li>)}
-        </ul>
+  <div class="servicios-container">
+    <div class="servicios-header-futurista reveal">
+      <div class="section-label-futurista">
+        <span class="label-dot"></span>
+        Lo que ofrecemos
       </div>
-    ))}
+      <h2 class="servicios-title">
+        Servicios <em class="title-highlight">Integrales</em>
+      </h2>
+      <p class="servicios-description">
+        Atención de máxima calidad con los más altos estándares clínicos, en un espacio cálido y sin juicios.
+      </p>
+    </div>
+
+    <div class="servicios-grid">
+      {servicios.map((s, i) => (
+        <div class={`servicio-card-futurista reveal reveal-delay-${(i % 3) + 1}`}>
+          <div class="card-glow"></div>
+          <div class="card-content">
+            <div class="icon-wrapper">
+              <div class="icon-bg"></div>
+              <div class="icon-text">{s.icono}</div>
+            </div>
+            <h3 class="card-title">{s.titulo}</h3>
+            <p class="card-desc">{s.desc}</p>
+            <ul class="card-items">
+              {s.items.map((item) => (
+                <li>
+                  <span class="checkmark">✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="card-border-effect"></div>
+        </div>
+      ))}
+    </div>
+
+    <div class="servicios-cta reveal">
+      <div class="cta-content">
+        <h3>¿Necesitas más información?</h3>
+        <p>Consulta con nuestras matronas sobre planes personalizados y promociones especiales.</p>
+      </div>
+      <a href="https://wa.me/56954365775" target="_blank" class="cta-button">
+        <span>Contactar</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
   </div>
 </section>

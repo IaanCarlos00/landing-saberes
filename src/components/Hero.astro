@@ -1,56 +1,99 @@
 ---
-// Hero.astro
+import '../styles/Hero-Futurista.css';
+
 const WA_URL = "https://wa.me/56954365775?text=Hola,%20vengo%20desde%20la%20página%20web%20y%20me%20gustaría%20agendar%20una%20cita.";
 ---
 
-<section class="hero">
-  <div class="hero-bg-orbs">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+<section class="hero-futurista">
+  <div class="hero-mesh">
+    <div class="mesh-orb mesh-orb-1"></div>
+    <div class="mesh-orb mesh-orb-2"></div>
+    <div class="mesh-orb mesh-orb-3"></div>
+    <div class="mesh-orb mesh-orb-4"></div>
   </div>
 
-  <div class="hero-content">
-    <span class="hero-eyebrow">Matronería Integral · Concepción</span>
-
-    <h1 class="hero-title font-display">
-      Tu salud, en manos <em>profesionales</em> y empáticas.
-    </h1>
-
-    <p class="hero-sub">
-      Espacio de atención integral para la mujer en Concepción y online a todo Chile.
-      Cuidado cálido, honesto y sin tabúes.
-    </p>
-
-    <div class="hero-actions">
-      <a href={WA_URL} target="_blank" class="btn-primary btn-wa-pulse">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#C19A6B">
-          <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9l-5.05.9"/>
-          <path d="M9 10a.5.5 0 0 0 1 0v-1a.5.5 0 0 0-1 0v1a5 5 0 0 0 5 5h1a.5.5 0 0 0 0-1h-1a.5.5 0 0 0 0 1"/>
-        </svg>
-        Agendar por WhatsApp
-      </a>
-      <a href="#servicios" class="btn-secondary">Ver Servicios →</a>
-    </div>
+  <div class="particles-container">
+    {[1, 2, 3, 4, 5, 6, 7, 8].map(i => <div class="particle" style={`--i: ${i}`}></div>)}
   </div>
 
-  <div class="hero-image">
-    <div class="hero-image-wrapper">
-      <img src="/foto-equipo.jpg" alt="Matronas Javiera y Valentina de Saberes" loading="eager" />
+  <div class="hero-lines">
+    <div class="line line-1"></div>
+    <div class="line line-2"></div>
+    <div class="line line-3"></div>
+  </div>
 
-      <div class="hero-badge">
-        <div class="hero-badge-icon">🌿</div>
-        <div class="hero-badge-text">
-          <strong>Atención Fonasa</strong>
-          <span>Desde $5.700</span>
+  <div class="hero-wrapper">
+    <div class="hero-content-futurista">
+      <div class="hero-badge-premium">
+        <span class="badge-dot"></span>
+        <span class="badge-text">Matronería de Próxima Generación</span>
+      </div>
+
+      <h1 class="hero-title-futurista">
+        <span class="word-highlight">Tu salud</span>,
+        <br />en manos <em class="glow-text">profesionales</em>
+        <br />y empáticas.
+      </h1>
+
+      <p class="hero-subtitle-futurista">
+        Espacio de atención integral para la mujer. Cuidado cálido, honesto y sin tabúes. Presencial en Concepción y telemedicina a todo Chile.
+      </p>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">1000+</div>
+          <div class="stat-label">Pacientes Confiadas</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-item">
+          <div class="stat-number">5★</div>
+          <div class="stat-label">Valoración Promedio</div>
         </div>
       </div>
 
-      <div class="hero-badge-2">
-        <div>
-          <strong>Online a todo Chile</strong>
-          <span>Telemedicina disponible</span>
+      <div class="hero-actions-futurista">
+        <a href={WA_URL} target="_blank" class="btn-primary-futurista btn-wa-glow">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9l-5.05.9"/>
+          </svg>
+          <span>Agendar Cita</span>
+          <div class="btn-glow"></div>
+        </a>
+        <a href="#servicios" class="btn-secondary-futurista">
+          <span>Descubrir Servicios</span>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="13 17 20 10 13 3"></polyline>
+            <polyline points="20 10 7 10"></polyline>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image-futurista">
+      <div class="image-wrapper-3d">
+        <div class="image-glow"></div>
+        <img src="/foto-equipo.jpg" alt="Matronas Saberes" loading="eager" />
+        
+        <div class="floating-badge badge-1">
+          <div class="badge-icon">💚</div>
+          <div>
+            <strong>Fonasa</strong>
+            <span>Desde $5.700</span>
+          </div>
         </div>
+
+        <div class="floating-badge badge-2">
+          <div class="badge-icon">🌐</div>
+          <div>
+            <strong>Online 24/7</strong>
+            <span>Todo Chile</span>
+          </div>
+        </div>
+
+        <div class="frame-corner frame-tl"></div>
+        <div class="frame-corner frame-tr"></div>
+        <div class="frame-corner frame-bl"></div>
+        <div class="frame-corner frame-br"></div>
       </div>
     </div>
   </div>
