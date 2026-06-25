@@ -72,7 +72,7 @@
     border-radius: 20px;
     padding: 28px 32px;
     width: 320px;
-    max-height: 220px;      /* ← altura máxima fija */
+    max-height: 220px;
     flex-shrink: 0;
     box-shadow: 0 4px 24px var(--sombra);
     border: 1px solid rgba(193,154,107,0.12);
@@ -98,9 +98,9 @@
     line-height: 1.65;
     color: var(--texto);
     flex: 1;
-    overflow: hidden;                /* ← corta el texto */
+    overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 4;           /* ← máximo 4 líneas */
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
   }
 
@@ -110,6 +110,7 @@
     color: var(--verde);
     letter-spacing: 0.03em;
     margin-top: auto;
+    flex-shrink: 0;
   }
 
   .resenas-estado {
@@ -165,10 +166,13 @@
         `<span class="estrella${i < pts ? '' : ' vacia'}">★</span>`
       ).join('');
       const nombre = nombreAnonimo(r.paciente_nombre, r.paciente_apellido);
+      const comentario = r.comentario.length > 160
+        ? r.comentario.slice(0, 157) + '…'
+        : r.comentario;
       return `
         <div class="resena-card">
           <div class="resena-estrellas">${estrellas}</div>
-          <p class="resena-texto">${r.comentario}</p>
+          <p class="resena-texto">${comentario}</p>
           <span class="resena-nombre">— ${nombre}</span>
         </div>
       `;
