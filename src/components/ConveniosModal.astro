@@ -110,6 +110,9 @@
 </div>
 
 <script is:inline>
+  (function() {
+  if (window.__conveniosInit) return;
+  window.__conveniosInit = true;
   const modal = document.getElementById('convenios-modal-overlay');
   const closeBtn = document.getElementById('convenios-close');
   const form = document.getElementById('convenios-form');
@@ -187,6 +190,7 @@
       setLoading(false);
     }
   });
+  })();
 </script>
 
 <style>
