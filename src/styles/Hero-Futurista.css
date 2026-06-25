@@ -1,4 +1,4 @@
-/* Hero-Futurista.css */
+/* Hero-Futurista.css - VERSIÓN MOBILE OPTIMIZADA */
 
 .hero-futurista {
   position: relative;
@@ -144,7 +144,7 @@
   100% { transform: translateX(50%); opacity: 0.1; }
 }
 
-/* CONTENEDOR */
+/* CONTENEDOR PRINCIPAL */
 .hero-wrapper {
   position: relative;
   z-index: 2;
@@ -158,7 +158,7 @@
   align-items: center;
 }
 
-/* CONTENIDO */
+/* CONTENIDO FUTURISTA */
 .hero-content-futurista {
   animation: fadeUpSlow 1s ease-out 0.2s both;
 }
@@ -458,7 +458,8 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* RESPONSIVO */
+/* ===== RESPONSIVO ===== */
+
 @media (max-width: 1024px) {
   .hero-wrapper {
     grid-template-columns: 1fr;
@@ -473,15 +474,137 @@
     animation: none;
     margin-top: 20px;
   }
+
+  .mesh-orb-1, .mesh-orb-2, .mesh-orb-3, .mesh-orb-4 {
+    filter: blur(40px);
+    opacity: 0.25;
+  }
 }
 
-@media (max-width: 640px) {
-  .hero-futurista { min-height: auto; padding: 20px 0; }
-  .hero-wrapper { padding: 20px 16px; gap: 30px; }
-  .hero-title-futurista { font-size: 36px; }
-  .hero-subtitle-futurista { font-size: 16px; }
-  .hero-stats { flex-direction: column; gap: 16px; padding: 16px; }
-  .stat-divider { width: 100%; height: 1px; }
-  .hero-actions-futurista { flex-direction: column; }
-  .btn-primary-futurista, .btn-secondary-futurista { width: 100%; }
+@media (max-width: 768px) {
+  .hero-futurista { 
+    min-height: 100vh;
+    padding: 40px 0;
+  }
+
+  .hero-wrapper { 
+    padding: 30px 16px; 
+    gap: 30px;
+  }
+
+  .hero-content-futurista {
+    order: 2;
+  }
+
+  .hero-image-futurista {
+    order: 1;
+  }
+
+  .hero-title-futurista { 
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
+
+  .hero-subtitle-futurista { 
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+
+  .hero-badge-premium {
+    margin-bottom: 16px;
+    font-size: 12px;
+  }
+
+  .hero-stats { 
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+    margin-bottom: 24px;
+  }
+
+  .stat-divider { 
+    width: 100%; 
+    height: 1px;
+  }
+
+  .hero-actions-futurista { 
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .btn-primary-futurista, .btn-secondary-futurista { 
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 14px;
+  }
+
+  .image-wrapper-3d {
+    animation: none;
+  }
+
+  .image-wrapper-3d img {
+    border-radius: 16px;
+  }
+
+  .floating-badge {
+    position: static;
+    animation: none;
+    margin-top: 12px;
+  }
+
+  .frame-corner {
+    display: none;
+  }
+
+  .particles-container {
+    opacity: 0;
+  }
+
+  .hero-lines {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-futurista { 
+    min-height: auto;
+    padding: 30px 0;
+  }
+
+  .hero-wrapper {
+    padding: 20px 12px;
+    gap: 20px;
+  }
+
+  .hero-title-futurista { 
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle-futurista { 
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .hero-stats {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .stat-number {
+    font-size: 24px;
+  }
+
+  .stat-label {
+    font-size: 10px;
+  }
+
+  .btn-primary-futurista, .btn-secondary-futurista {
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+
+  .mesh-orb-1, .mesh-orb-2, .mesh-orb-3, .mesh-orb-4 {
+    display: none;
+  }
 }

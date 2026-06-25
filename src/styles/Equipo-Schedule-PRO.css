@@ -210,27 +210,15 @@
 }
 
 /* REPONSIVO */
+@media (max-width: 1024px) {
+  .schedule-overlay {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
 @media (max-width: 768px) {
   .schedule-overlay {
-    opacity: 1;
-    pointer-events: auto;
-    position: relative;
-    margin-top: -450px;
-    margin-bottom: 16px;
-    border-radius: 0;
-    border: none;
-  }
-
-  .schedule-title {
-    font-size: 22px;
-    margin-bottom: 16px;
-  }
-
-  .schedule-content {
-    padding: 20px 16px;
-  }
-
-  .schedule-items {
-    max-height: none;
+    display: none;
   }
 }
