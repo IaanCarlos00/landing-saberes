@@ -159,9 +159,9 @@
     }
 
     function nombreAnonimo(nombre, apellido) {
-      const n = (nombre || '').trim().split(' ')[0];
-      const a = (apellido || '').trim()[0];
-      return a ? `${n} ${a}.` : n;
+      const n = (nombre || '').trim()[0];  // solo primera letra del nombre
+      const a = (apellido || '').trim()[0]; // solo primera letra del apellido
+      return (n && a) ? `${n}. ${a}.` : (n ? `${n}.` : 'Paciente');
     }
 
     function tarjetaHTML(r) {
