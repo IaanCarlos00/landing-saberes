@@ -1,0 +1,408 @@
+---
+// ConveniosModal.astro - Modal para convenios corporativos
+---
+
+<div id="convenios-modal-overlay" class="convenios-overlay">
+  <div class="convenios-modal">
+    {/* HEADER */}
+    <div class="convenios-header">
+      <h2>Convenios Corporativos</h2>
+      <button id="convenios-close" class="convenios-close-btn" aria-label="Cerrar">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    {/* DESCRIPCIÓN */}
+    <div class="convenios-description">
+      <p>¿Tu empresa busca beneficios de salud para tus colaboradoras? Nos encantaría establecer un convenio con ustedes.</p>
+      <p>Completa el formulario y nuestro equipo se contactará pronto.</p>
+    </div>
+
+    {/* FORMULARIO */}
+    <form id="convenios-form" class="convenios-form">
+      <div class="form-group">
+        <label for="empresa-nombre">Nombre de la Empresa *</label>
+        <input 
+          type="text" 
+          id="empresa-nombre" 
+          name="empresa_nombre"
+          placeholder="Ej: Acme Corp"
+          required
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="contacto-nombre">Nombre de Contacto *</label>
+        <input 
+          type="text" 
+          id="contacto-nombre" 
+          name="contacto_nombre"
+          placeholder="Tu nombre"
+          required
+        />
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="contacto-email">Email *</label>
+          <input 
+            type="email" 
+            id="contacto-email" 
+            name="contacto_email"
+            placeholder="email@empresa.com"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="contacto-telefono">Teléfono *</label>
+          <input 
+            type="tel" 
+            id="contacto-telefono" 
+            name="contacto_telefono"
+            placeholder="+56 9 XXXX XXXX"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="mensaje">Mensaje *</label>
+        <textarea 
+          id="mensaje" 
+          name="mensaje"
+          placeholder="Cuéntanos sobre tu empresa y qué te interesa..."
+          rows="4"
+          required
+        ></textarea>
+      </div>
+
+      <button type="submit" class="convenios-submit-btn">
+        <span>Enviar Solicitud</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </button>
+
+      <p class="form-note">* Campos obligatorios</p>
+    </form>
+  </div>
+</div>
+
+{/* TOAST DE CONFIRMACIÓN */}
+<div id="convenios-toast" class="convenios-toast">
+  <div class="toast-content">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <polyline points="20 6 9 17 4 12"></polyline>
+    </svg>
+    <span>¡Solicitud enviada! Las matronas se contactarán pronto.</span>
+  </div>
+</div>
+
+<script is:inline>
+  // CONVENIOS MODAL LOGIC
+  const modal = document.getElementById('convenios-modal-overlay');
+  const closeBtn = document.getElementById('convenios-close');
+  const form = document.getElementById('convenios-form');
+  const toast = document.getElementById('convenios-toast');
+
+  // Funciones de apertura/cierre
+  window.abrirConveniosModal = () => {
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  };
+
+  const cerrarModal = () => {
+    modal.classList.remove('active');
+    document.body.style.overflow = 'auto';
+  };
+
+  closeBtn.addEventListener('click', cerrarModal);
+
+  // Cerrar al clickear fuera
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      cerrarModal();
+    }
+  });
+
+  // Cerrar con ESC
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('active')) {
+      cerrarModal();
+    }
+  });
+
+  // ENVIAR FORMULARIO
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData);
+
+    try {
+      // Enviar via API (crea el endpoint en tu servidor)
+      const response = await fetch('/api/convenios', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        // Mostrar toast
+        toast.classList.add('show');
+        
+        // Limpiar formulario
+        form.reset();
+        
+        // Cerrar modal en 2 segundos
+        setTimeout(() => {
+          cerrarModal();
+          toast.classList.remove('show');
+        }, 2000);
+      } else {
+        alert('Error al enviar. Intenta de nuevo.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error al enviar. Intenta de nuevo.');
+    }
+  });
+</script>
+
+<style>
+  /* MODAL OVERLAY */
+  .convenios-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    padding: 20px;
+  }
+
+  .convenios-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* MODAL */
+  .convenios-modal {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 240, 232, 0.95) 100%);
+    border: 1px solid rgba(49, 72, 50, 0.1);
+    border-radius: 24px;
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* HEADER */
+  .convenios-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+  }
+
+  .convenios-header h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--texto);
+  }
+
+  .convenios-close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--texto-soft);
+    transition: all 0.3s ease;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .convenios-close-btn:hover {
+    color: var(--texto);
+    transform: rotate(90deg);
+  }
+
+  /* DESCRIPCIÓN */
+  .convenios-description {
+    margin-bottom: 28px;
+  }
+
+  .convenios-description p {
+    font-size: 14px;
+    color: var(--texto-soft);
+    line-height: 1.6;
+    margin-bottom: 8px;
+  }
+
+  /* FORMULARIO */
+  .convenios-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--texto);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 12px 16px;
+    border: 1px solid rgba(49, 72, 50, 0.2);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.7);
+    color: var(--texto);
+    font-size: 14px;
+    font-family: inherit;
+    transition: all 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    outline: none;
+    border-color: var(--verde);
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 0 3px rgba(49, 72, 50, 0.1);
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  /* BOTÓN SUBMIT */
+  .convenios-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--verde) 0%, var(--verde-dark) 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    margin-top: 8px;
+  }
+
+  .convenios-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(49, 72, 50, 0.2);
+  }
+
+  .convenios-submit-btn:active {
+    transform: translateY(0);
+  }
+
+  /* NOTA */
+  .form-note {
+    font-size: 12px;
+    color: var(--texto-soft);
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  /* TOAST */
+  .convenios-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--verde) 0%, var(--verde-dark) 100%);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(49, 72, 50, 0.3);
+    opacity: 0;
+    transform: translateY(100px);
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 1001;
+  }
+
+  .convenios-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .toast-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    .convenios-modal {
+      padding: 24px;
+    }
+
+    .convenios-header h2 {
+      font-size: 24px;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .convenios-toast {
+      left: 20px;
+      right: auto;
+      bottom: 20px;
+    }
+  }
+</style>
