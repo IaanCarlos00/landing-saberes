@@ -106,7 +106,7 @@ export const POST: APIRoute = async ({ request }) => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Saberes Convenios <onboarding@resend.dev>', // ← usa este while el dominio no esté verificado
+        from: 'Saberes Convenios <convenios@saberes.cl>', // ← usa este while el dominio no esté verificado
         to: 'saberesspa@gmail.com',
         reply_to: data.contacto_email,                    // ← al responder, va directo al contacto
         subject: `Nueva Solicitud de Convenio - ${data.empresa_nombre}`,
@@ -128,7 +128,7 @@ export const POST: APIRoute = async ({ request }) => {
         Authorization: `Bearer ${RESEND_API_KEY}`,
       },
       body: JSON.stringify({
-        from: 'Saberes <onboarding@resend.dev>', // ← mismo from por ahora
+        from: 'Saberes <convenios@saberes.cl>', // ← mismo from por ahora
         to: data.contacto_email,
         subject: 'Hemos recibido tu solicitud de convenio - Saberes',
         html: confirmHTML,
