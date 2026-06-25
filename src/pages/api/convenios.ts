@@ -1,3 +1,4 @@
+export const prerender = false;
 // src/pages/api/convenios.ts
 import type { APIRoute } from 'astro';
 
