@@ -72,6 +72,7 @@
     border-radius: 20px;
     padding: 28px 32px;
     width: 320px;
+    max-height: 220px;      /* ← altura máxima fija */
     flex-shrink: 0;
     box-shadow: 0 4px 24px var(--sombra);
     border: 1px solid rgba(193,154,107,0.12);
@@ -80,7 +81,6 @@
     gap: 14px;
     transition: box-shadow 0.25s;
     cursor: default;
-    min-height: 180px;
   }
   .resena-card:hover {
     box-shadow: 0 8px 36px rgba(49,72,50,0.16);
@@ -98,6 +98,10 @@
     line-height: 1.65;
     color: var(--texto);
     flex: 1;
+    overflow: hidden;                /* ← corta el texto */
+    display: -webkit-box;
+    -webkit-line-clamp: 4;           /* ← máximo 4 líneas */
+    -webkit-box-orient: vertical;
   }
 
   .resena-nombre {
