@@ -1,7 +1,5 @@
 ---
 // Resenas.astro
-// Carga reseñas desde el sistema interno de encuestas de Saberes.
-// Solo muestra encuestas respondidas que tengan comentario y estrellas.
 ---
 
 <section class="resenas-section">
@@ -43,19 +41,21 @@
 
   .resenas-track-wrapper {
     overflow: hidden;
+    width: 100%;
   }
 
   .resenas-track {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     gap: 24px;
     width: max-content;
-    padding: 16px 24px;
+    padding: 20px 40px;
     align-items: stretch;
   }
 
-  /* Solo anima cuando hay tarjetas cargadas */
   .resenas-track.animando {
-    animation: scrollTrack 35s linear infinite;
+    animation: scrollTrack 30s linear infinite;
   }
   .resenas-track.animando:hover {
     animation-play-state: paused;
@@ -66,51 +66,57 @@
     100% { transform: translateX(-50%); }
   }
 
-  /* Tarjeta */
   .resena-card {
-    background: white;
-    border-radius: 20px;
-    padding: 28px 32px;
-    width: 320px;
-    max-height: 220px;
-    flex-shrink: 0;
-    box-shadow: 0 4px 24px var(--sombra);
-    border: 1px solid rgba(193,154,107,0.12);
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    transition: box-shadow 0.25s;
+    background: #ffffff !important;
+    border-radius: 20px !important;
+    padding: 28px 28px !important;
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+    height: 210px !important;
+    flex-shrink: 0 !important;
+    box-shadow: 0 4px 20px rgba(49, 72, 50, 0.10) !important;
+    border: 1px solid rgba(193, 154, 107, 0.20) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
     cursor: default;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
   }
+
   .resena-card:hover {
-    box-shadow: 0 8px 36px rgba(49,72,50,0.16);
+    box-shadow: 0 8px 32px rgba(49, 72, 50, 0.18) !important;
   }
 
   .resena-estrellas {
     display: flex;
     gap: 3px;
+    flex-shrink: 0;
   }
-  .estrella      { font-size: 1.05rem; color: var(--dorado); }
+
+  .estrella      { font-size: 1rem; color: var(--dorado, #c19a6b); }
   .estrella.vacia { color: #ddd; }
 
   .resena-texto {
-    font-size: 0.95rem;
-    line-height: 1.65;
-    color: var(--texto);
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--texto, #2d2d2d);
     flex: 1;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+    margin: 0;
   }
 
   .resena-nombre {
     font-weight: 700;
-    font-size: 0.88rem;
-    color: var(--verde);
+    font-size: 0.85rem;
+    color: var(--verde, #314832);
     letter-spacing: 0.03em;
-    margin-top: auto;
     flex-shrink: 0;
+    margin: 0;
   }
 
   .resenas-estado {
@@ -136,7 +142,6 @@
       if (!res.ok) throw new Error('Error de red');
       const todas = await res.json();
 
-      // Solo encuestas respondidas con comentario y estrellas
       resenas = todas.filter(e =>
         e.estado === 'respondida' &&
         e.comentario &&
@@ -153,7 +158,6 @@
       return;
     }
 
-    // Nombre anónimo: "María G." — solo primera letra del apellido
     function nombreAnonimo(nombre, apellido) {
       const n = (nombre || '').trim().split(' ')[0];
       const a = (apellido || '').trim()[0];
@@ -166,8 +170,8 @@
         `<span class="estrella${i < pts ? '' : ' vacia'}">★</span>`
       ).join('');
       const nombre = nombreAnonimo(r.paciente_nombre, r.paciente_apellido);
-      const comentario = r.comentario.length > 160
-        ? r.comentario.slice(0, 157) + '…'
+      const comentario = r.comentario.length > 150
+        ? r.comentario.slice(0, 147) + '…'
         : r.comentario;
       return `
         <div class="resena-card">
@@ -178,8 +182,9 @@
       `;
     }
 
-    // Duplicamos para efecto infinito
-    const html = [...resenas, ...resenas].map(tarjetaHTML).join('');
+    // Triplicamos si hay pocas reseñas para que el carrusel llene bien
+    const copias = resenas.length < 4 ? [...resenas, ...resenas, ...resenas, ...resenas] : [...resenas, ...resenas];
+    const html = copias.map(tarjetaHTML).join('');
     track.innerHTML = html;
     track.classList.add('animando');
   }
