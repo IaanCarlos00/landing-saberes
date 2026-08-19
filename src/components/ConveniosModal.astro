@@ -80,6 +80,12 @@
         ></textarea>
       </div>
 
+      {/* HONEYPOT ANTI-SPAM — campo oculto, invisible para humanos, los bots suelen rellenarlo */}
+      <div style="position:absolute; left:-9999px; top:-9999px;" aria-hidden="true">
+        <label for="empresa-web">No completar este campo</label>
+        <input type="text" id="empresa-web" name="empresa_web" tabindex="-1" autocomplete="off" />
+      </div>
+
       {/* MENSAJE DE ERROR */}
       <div id="convenios-error" class="convenios-error" style="display:none;"></div>
 

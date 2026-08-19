@@ -164,15 +164,22 @@
       return (n && a) ? `${n}. ${a}.` : (n ? `${n}.` : 'Paciente');
     }
 
+    function escapeHTML(str) {
+      const div = document.createElement('div');
+      div.textContent = str;
+      return div.innerHTML;
+    }
+
     function tarjetaHTML(r) {
       const pts = Math.max(1, Math.min(5, Math.round(r.estrellas)));
       const estrellas = Array.from({ length: 5 }, (_, i) =>
         `<span class="estrella${i < pts ? '' : ' vacia'}">★</span>`
       ).join('');
-      const nombre = nombreAnonimo(r.paciente_nombre, r.paciente_apellido);
-      const comentario = r.comentario.length > 150
+      const nombre = escapeHTML(nombreAnonimo(r.paciente_nombre, r.paciente_apellido));
+      const comentarioRaw = r.comentario.length > 150
         ? r.comentario.slice(0, 147) + '…'
         : r.comentario;
+      const comentario = escapeHTML(comentarioRaw);
       return `
         <div class="resena-card">
           <div class="resena-estrellas">${estrellas}</div>

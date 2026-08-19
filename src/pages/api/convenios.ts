@@ -8,10 +8,36 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const data = await request.json();
 
+    // Honeypot anti-spam: si este campo viene lleno, es un bot.
+    // Respondemos éxito falso para no delatar el mecanismo al bot.
+    if (data.empresa_web) {
+      return new Response(
+        JSON.stringify({ success: true, message: 'Solicitud enviada correctamente' }),
+        { status: 200 }
+      );
+    }
+
     // Validar datos requeridos
     if (!data.empresa_nombre || !data.contacto_email || !data.mensaje) {
       return new Response(
         JSON.stringify({ error: 'Faltan datos requeridos' }),
+        { status: 400 }
+      );
+    }
+
+    // Validar formato de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(data.contacto_email)) {
+      return new Response(
+        JSON.stringify({ error: 'El formato del email no es válido' }),
+        { status: 400 }
+      );
+    }
+
+    // Límite de longitud razonable para evitar abuso
+    if (data.mensaje.length > 3000 || data.empresa_nombre.length > 200) {
+      return new Response(
+        JSON.stringify({ error: 'El contenido enviado es demasiado largo' }),
         { status: 400 }
       );
     }

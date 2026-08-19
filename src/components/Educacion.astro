@@ -3,13 +3,13 @@
 const articulos = [
   {
     href: "https://lavidamoderna.cl/2026/estigma-menstrual/",
-    thumb: "/preview-estigma.jpg",
+    thumb: "/preview-estigma.webp",
     titulo: "Estigma menstrual: Rompiendo tabúes",
     desc: "La importancia de normalizar procesos naturales.",
   },
   {
     href: "https://lavidamoderna.cl/2026/un-miedo-viral-vph/",
-    thumb: "/preview-vph.jpg",
+    thumb: "/preview-vph.webp",
     titulo: "Un miedo viral: La verdad sobre el VPH",
     desc: "Despejamos dudas sobre el virus del papiloma.",
   },
@@ -26,7 +26,7 @@ const articulos = [
     <div class="articulo-col reveal reveal-delay-1">
       <h3>En la Prensa</h3>
       {articulos.map(a => (
-        <a href={a.href} target="_blank" class="articulo-card">
+        <a href={a.href} target="_blank" rel="noopener noreferrer" class="articulo-card">
           <div class="articulo-thumb" style={`background-image: url('${a.thumb}');`}></div>
           <div>
             <h4>{a.titulo}</h4>
